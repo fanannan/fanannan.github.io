@@ -113,7 +113,7 @@
 <meta property="og:image" content="http://fanannan.github.io/2017/01/27/cloak-trade/hist_NYSE_M_down_1_60.png">
 <meta property="og:image" content="http://fanannan.github.io/2017/01/27/cloak-trade/hist_NASDAQ_M_up_1_60.png">
 <meta property="og:image" content="http://fanannan.github.io/2017/01/27/cloak-trade/hist_NASDAQ_M_down_1_60.png">
-<meta property="og:updated_time" content="2017-01-27T10:23:52.768Z">
+<meta property="og:updated_time" content="2017-01-27T10:34:08.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="クローク・トレード">
 <meta name="twitter:description" content="この記事に書いてあること・ファンドマネージャーによる恣意的なパフォーマンス操作について・クローク・トレードとは何か・日米の株式市場に、クローク・トレードは存在しそうか・ファンドマネージャーのクローク・トレードについて窺えること
@@ -385,7 +385,18 @@
 <h2 id="評価方法"><a href="#評価方法" class="headerlink" title="評価方法"></a>評価方法</h2><p>月末と月初の株価の動きには、次の４パターンがある。<br> (1) 月末に株価が上がり、月初にも株価が上がる（↑↑）<br> (2) 月末に株価が上がり、月初に株価が下がる（↑↓）<br> (3) 月末に株価が下がり、月初に株価が上がる（↓↑）<br> (4) 月末に株価が下がり、月初にも株価が下がる（↓↓）<br>ごくごく単純に考えれば、それぞれのパターンが起きる可能性は２５％である。もし、先ほど述べたように、ファンドマネージャーが月末を挟んでクローク・トレードをしているのであれば、(2)あるいは(3)が多く見られるはずである。<br>先ほど冒頭に述べた発想からすると、クローク・トレードは特定の銘柄について行われるものであって、全ての銘柄に同じように行われるものではないはずである。したがって、ここで着目したいのは、他の大多数の銘柄とは違い、(2)または(3)が際立って良く起こる銘柄が存在するかどうかである（市場全体の株価が上げているとか、インデックスの動きを控除するというようなことは対象とする全ての銘柄に共通することなので、特段考慮する必要はない）。</p>
 <h2 id="計算結果"><a href="#計算結果" class="headerlink" title="計算結果"></a>計算結果</h2><p>Stooqのデータの中から、2006年1月から2016年12月までの間に、６０か月以上のデータが取得できる銘柄を対象として、銘柄別に(2)と(3)それぞれに該当する月の数を数え、それぞれがデータとして使用できた月数に対する比率を計算することとした。例えば、ある銘柄について、過去５か月のデータがあり、２回の(2)があり、１回の(3)があったのであれば、それぞれ40%と20%ということになる。</p>
 <p>月末最終営業日の１日前の終値から最終営業日までの変化と、最終営業日の終値から翌月初営業日終値までの１日間の変化を参照し、この計算を日本株の各銘柄について行うと、次のようなヒストグラムになった。</p>
-<table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_up_1_60.png" title="日本株観測期間1日毎月月初株高" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_1_60.png" title="日本株観測期間1日毎月月初株安" width="250"><br></td></tr></table><br>左側の青のヒストグラムが月末に株価が上がり、月初に下がる(2)のパターン、右の赤のものがその反対の(3)のパターンである。横軸は0.025刻み、縦軸は銘柄数である。４つパターンがあるので、単純な平均は25%(0.25)で、大雑把に言えば、実際にそのあたりがヒストグラムのピークになっているが、明らかに青のヒストグラムでは左側の分布が大きく、赤のヒストグラムでは右側の裾野が大きい。比較のために、４つのパターンがランダムに発生すると仮定して同じ銘柄データで作成したのが、次の黄色のヒストグラムであるが、分布の裾野が青や赤のケースよりもずっと狭いことが見て取れる（なお、これらの分布はどれも0から1までの範囲を取るので、平均が０に近い時には、左側が膨らみ、右側の裾が長くなる）。<br><table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_random_1_60.png" title="日本株観測期間1日毎月値動きランダム" width="250"><br></td></tr></table><br>さて、ここで月末に株価が下がり、翌月初に上がる、赤のヒストグラムについて意味を確認しておきたい。このヒストグラムは、右裾が横軸の値で0.5を超えている。これは、対象期間（60か月以上）の各月において、半分（０．５）以上の月で、月末に株価が下がり、翌月初に上がった銘柄が存在しているということを示している。<br>もちろん、確率的には、この株価のパターンにたまたま該当することはありえるが、それが60回中30回もあるというのは、偶然として説明するにはかなり稀有なことと考えるのが自然だろう。右側の裾野の形も、ランダムな場合の黄色のヒストグラムと比べてぐっと大きくなっているのも、何らかの理由が働いていることを示唆している。<br>また、青のヒストグラムは、月末に株価が上がり、翌月末に下がる比率の分布を示しているわけだが、その右側部分が大きく膨らんでいることは、そのような比率が低い、すなわち、月末に株価が上がって、翌月末に下がるものが少ないことを示している。<br><br>## 株価変化観測期間による違い<br><br>ファンドマネージャーや機関投資家が売買を行う際、その金額が多額であれば、複数の日に分けて取引を行うことがある。そこで、先程は1日間だけの価格の動く方向を見たが、今度は3日間、5日間での動きを見てみたい。下のヒストグラムは、左から順にに月末を挟んで、パターン(3)について1, 3, 5日間の動きを見たものである（１日のものは再掲）。<br><table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_1_60.png" title="日本株観測期間1日毎月月初値下がり" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_3_60.png" title="日本株観測期間3日毎月月初値下がり" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_5_60.png" title="日本株観測期間5日毎月月初値下がり" width="250"><br></td></tr></table><br>これらによれば、観測日数が延びるのにつれて、右側の裾野の高さが下がっている。このことは、ファンドマネージャーや投資家が月末に株式の売却を行う際に、何日も必要とするうような銘柄は限られているということを示唆していると思われる。<br><br>## 四半期末での状況<br><br>ここまで、60か月以上の期間の毎月末前後の株価の動きを見てきたが、ファンドマネージャーが投資家に報告を行ったり、機関投資家が業績を発表する基準となるのが四半期末であることを考えると、各月末よりも各四半期末の方が、よりはっきりとした特徴があるかもしれない。<br>下の左側のヒストグラムがこれまでと同じ（観測期間1日の毎月末のもの）、右側のヒストグラムが四半期の場合である。予想と異なり、特に目立った違いがあるとまでは言いづらい。しかも、毎四半期の場合には、サンプルデータの数が毎月末の場合の３分の１になるので、偶然の要素が働きやすく、ヒストグラムの裾野が広く見えやすいことを割り引いて考える必要もある。<br><table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_1_60.png" title="日本株観測期間1日毎月月初値下がり" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_Q_down_1_15.0.png" title="日本株観測期間1日四半期月初値下がり" width="250"><br></td></tr></table>
+<table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_up_1_60.png" title="日本株観測期間1日毎月月初株高" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_1_60.png" title="日本株観測期間1日毎月月初株安" width="250"><br></td></tr></table>
+
+<p>左側の青のヒストグラムが月末に株価が上がり、月初に下がる(2)のパターン、右の赤のものがその反対の(3)のパターンである。横軸は0.025刻み、縦軸は銘柄数である。４つパターンがあるので、単純な平均は25%(0.25)で、大雑把に言えば、実際にそのあたりがヒストグラムのピークになっているが、明らかに青のヒストグラムでは左側の分布が大きく、赤のヒストグラムでは右側の裾野が大きい。比較のために、４つのパターンがランダムに発生すると仮定して同じ銘柄データで作成したのが、次の黄色のヒストグラムであるが、分布の裾野が青や赤のケースよりもずっと狭いことが見て取れる（なお、これらの分布はどれも0から1までの範囲を取るので、平均が０に近い時には、左側が膨らみ、右側の裾が長くなる）。</p>
+<table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_random_1_60.png" title="日本株観測期間1日毎月値動きランダム" width="250"><br></td></tr></table>
+
+<p>さて、ここで月末に株価が下がり、翌月初に上がる、赤のヒストグラムについて意味を確認しておきたい。このヒストグラムは、右裾が横軸の値で0.5を超えている。これは、対象期間（60か月以上）の各月において、半分（０．５）以上の月で、月末に株価が下がり、翌月初に上がった銘柄が存在しているということを示している。<br>もちろん、確率的には、この株価のパターンにたまたま該当することはありえるが、それが60回中30回もあるというのは、偶然として説明するにはかなり稀有なことと考えるのが自然だろう。右側の裾野の形も、ランダムな場合の黄色のヒストグラムと比べてぐっと大きくなっているのも、何らかの理由が働いていることを示唆している。<br>また、青のヒストグラムは、月末に株価が上がり、翌月末に下がる比率の分布を示しているわけだが、その右側部分が大きく膨らんでいることは、そのような比率が低い、すなわち、月末に株価が上がって、翌月末に下がるものが少ないことを示している。</p>
+<h2 id="株価変化観測期間による違い"><a href="#株価変化観測期間による違い" class="headerlink" title="株価変化観測期間による違い"></a>株価変化観測期間による違い</h2><p>ファンドマネージャーや機関投資家が売買を行う際、その金額が多額であれば、複数の日に分けて取引を行うことがある。そこで、先程は1日間だけの価格の動く方向を見たが、今度は3日間、5日間での動きを見てみたい。下のヒストグラムは、左から順にに月末を挟んで、パターン(3)について1, 3, 5日間の動きを見たものである（１日のものは再掲）。</p>
+<table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_1_60.png" title="日本株観測期間1日毎月月初値下がり" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_3_60.png" title="日本株観測期間3日毎月月初値下がり" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_5_60.png" title="日本株観測期間5日毎月月初値下がり" width="250"><br></td></tr></table>
+
+<p>これらによれば、観測日数が延びるのにつれて、右側の裾野の高さが下がっている。このことは、ファンドマネージャーや投資家が月末に株式の売却を行う際に、何日も必要とするうような銘柄は限られているということを示唆していると思われる。</p>
+<h2 id="四半期末での状況"><a href="#四半期末での状況" class="headerlink" title="四半期末での状況"></a>四半期末での状況</h2><p>ここまで、60か月以上の期間の毎月末前後の株価の動きを見てきたが、ファンドマネージャーが投資家に報告を行ったり、機関投資家が業績を発表する基準となるのが四半期末であることを考えると、各月末よりも各四半期末の方が、よりはっきりとした特徴があるかもしれない。<br>下の左側のヒストグラムがこれまでと同じ（観測期間1日の毎月末のもの）、右側のヒストグラムが四半期の場合である。予想と異なり、特に目立った違いがあるとまでは言いづらい。しかも、毎四半期の場合には、サンプルデータの数が毎月末の場合の３分の１になるので、偶然の要素が働きやすく、ヒストグラムの裾野が広く見えやすいことを割り引いて考える必要もある。</p>
+<table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_1_60.png" title="日本株観測期間1日毎月月初値下がり" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_Q_down_1_15.0.png" title="日本株観測期間1日四半期月初値下がり" width="250"><br></td></tr></table>
 
 <h2 id="市場別の違い"><a href="#市場別の違い" class="headerlink" title="市場別の違い"></a>市場別の違い</h2><p>ここまでのところで、クローク・トレードの様子を見るには、観測期間1日、毎月末で調べていけば良さそうなことが分かってきたが、米国株ではどうだろうか。以下、日本株の(2)と(3)のパターンに習い、NYSEとNASDAQのケースを並べてみた。</p>
 <h3 id="日本株"><a href="#日本株" class="headerlink" title="日本株"></a>日本株</h3><table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_up_1_60.png" title="日本株観測期間1日毎月月初株高" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_1_60.png" title="日本株観測期間1日毎月月初株安" width="250"><br></td></tr></table>
@@ -426,6 +437,22 @@
         </div>
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/27/a/" rel="next" title="クローク・トレード">
+                <i class="fa fa-chevron-left"></i> クローク・トレード
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
@@ -497,7 +524,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">記事</span>
             </a>
           </div>
@@ -576,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#この記事に書いてあること"><span class="nav-number">1.</span> <span class="nav-text">この記事に書いてあること</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ちょっと長い前置き"><span class="nav-number">2.</span> <span class="nav-text">ちょっと長い前置き</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#クローク・トレード"><span class="nav-number">3.</span> <span class="nav-text">クローク・トレード</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#株価データ"><span class="nav-number">4.</span> <span class="nav-text">株価データ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#評価方法"><span class="nav-number">5.</span> <span class="nav-text">評価方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#計算結果"><span class="nav-number">6.</span> <span class="nav-text">計算結果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#市場別の違い"><span class="nav-number">7.</span> <span class="nav-text">市場別の違い</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#日本株"><span class="nav-number">7.1.</span> <span class="nav-text">日本株</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NYSE"><span class="nav-number">7.2.</span> <span class="nav-text">NYSE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NASDAQ"><span class="nav-number">7.3.</span> <span class="nav-text">NASDAQ</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#おわりに"><span class="nav-number">8.</span> <span class="nav-text">おわりに</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#この記事に書いてあること"><span class="nav-number">1.</span> <span class="nav-text">この記事に書いてあること</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ちょっと長い前置き"><span class="nav-number">2.</span> <span class="nav-text">ちょっと長い前置き</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#クローク・トレード"><span class="nav-number">3.</span> <span class="nav-text">クローク・トレード</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#株価データ"><span class="nav-number">4.</span> <span class="nav-text">株価データ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#評価方法"><span class="nav-number">5.</span> <span class="nav-text">評価方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#計算結果"><span class="nav-number">6.</span> <span class="nav-text">計算結果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#株価変化観測期間による違い"><span class="nav-number">7.</span> <span class="nav-text">株価変化観測期間による違い</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四半期末での状況"><span class="nav-number">8.</span> <span class="nav-text">四半期末での状況</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#市場別の違い"><span class="nav-number">9.</span> <span class="nav-text">市場別の違い</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#日本株"><span class="nav-number">9.1.</span> <span class="nav-text">日本株</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NYSE"><span class="nav-number">9.2.</span> <span class="nav-text">NYSE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NASDAQ"><span class="nav-number">9.3.</span> <span class="nav-text">NASDAQ</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#おわりに"><span class="nav-number">10.</span> <span class="nav-text">おわりに</span></a></li></ol></div>
             
 
           </div>
