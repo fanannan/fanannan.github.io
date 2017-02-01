@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fanannan.github.io/"/>
-  <updated>2017-02-01T02:52:01.857Z</updated>
+  <updated>2017-02-01T02:53:41.683Z</updated>
   <id>http://fanannan.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://fanannan.github.io/2017/02/01/yangzhang/"/>
     <id>http://fanannan.github.io/2017/02/01/yangzhang/</id>
     <published>2017-02-01T02:35:00.000Z</published>
-    <updated>2017-02-01T02:52:01.857Z</updated>
+    <updated>2017-02-01T02:53:41.683Z</updated>
     
     <content type="html"><![CDATA[<h1 id="ランダムウォークとボラティリティ"><a href="#ランダムウォークとボラティリティ" class="headerlink" title="ランダムウォークとボラティリティ"></a>ランダムウォークとボラティリティ</h1><p>株価や金利などの動きは、一般的な理論では、ランダムウォークに基づいていると言われる。<br>もちろん、厳密にそう言えるものかどうかという議論はたくさんあるが、いわゆる標準的なモデルでは、ランダムウォークが前提だし、株価や金利などの評価をするときには、まずはそこから始めなくてはならない。<br>ランダムウォークの動きを決めるのは、ボラティリティの大きさだ。ボラティリティの値を与えれば、株価や金利のクのシミュレーションを行うことができるし、逆に、実際の株価や金利の動き（経路）から、ボラティリティを推定することもできる。</p>
 <h1 id="一般的なボラティリティの推定方法"><a href="#一般的なボラティリティの推定方法" class="headerlink" title="一般的なボラティリティの推定方法"></a>一般的なボラティリティの推定方法</h1><p>株価を例に取ると、ある営業日の終値と、その前日の終値の変化率の対数を求め、そのデータを一定の計測期間について集めて標準偏差を計算するのが、ごく一般的な方法だ。たとえば、１か月間の株価のボラティリティを知りたければ、その株価の過去２０営業日分の日次の対数変化率を計測し、その標準偏差を求めて、比較しやすいよう、期間１年に相当するボラティリティに換算する。</p>
@@ -140,8 +140,12 @@ for i in range(200):
     
     </summary>
     
+      <category term="株" scheme="http://fanannan.github.io/categories/%E6%A0%AA/"/>
     
-      <category term="株, 評価方法" scheme="http://fanannan.github.io/tags/%E6%A0%AA-%E8%A9%95%E4%BE%A1%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="株" scheme="http://fanannan.github.io/tags/%E6%A0%AA/"/>
+    
+      <category term="評価方法" scheme="http://fanannan.github.io/tags/%E8%A9%95%E4%BE%A1%E6%96%B9%E6%B3%95/"/>
     
   </entry>
   
