@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fanannan.github.io/"/>
-  <updated>2017-02-01T04:37:47.060Z</updated>
+  <updated>2017-02-08T06:23:08.814Z</updated>
   <id>http://fanannan.github.io/</id>
   
   <author>
@@ -16,11 +16,148 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>タックスディのアノマリー</title>
+    <link href="http://fanannan.github.io/2017/02/08/taxday-anomaly/"/>
+    <id>http://fanannan.github.io/2017/02/08/taxday-anomaly/</id>
+    <published>2017-02-08T05:55:58.000Z</published>
+    <updated>2017-02-08T06:23:08.814Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="タックスディのアノマリー"><a href="#タックスディのアノマリー" class="headerlink" title="タックスディのアノマリー"></a>タックスディのアノマリー</h1><p>米国の確定申告締切日（”タックスディ”）から翌日にかけて株価が上がるというアノマリーを発見したという論文（ <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2910752" target="_blank" rel="external">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2910752</a> ）が出ていたので、簡単に確かめてみることにした。</p>
+<h1 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h1><p>対象銘柄については、S&amp;P500、ダウ・ジョーンズ、VIX、ついでにVXXとVIXとし、株価データはYahoo Financeから取得する。また、タックスディの日付データは、<a href="https://www.timeanddate.com/holidays/us/tax-day" target="_blank" rel="external">https://www.timeanddate.com/holidays/us/tax-day</a> を参照して、1990年からの過去26年分について評価する。</p>
+<h1 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h1><p>下記左のチャートは、タックスディの終値を１としたときの、前後５日間の終値の推移を示したものである。また、右のチャートはタックスディの終値からその翌日終値までの変化率の分布を示したものである。</p>
+<p>S&amp;P500に関しては、平均51bpのプラスで、上げる確率もまずまず高い。それと比べると、ダウ・ジョーンズについては、比較的弱い印象だ。大型株の方が影響を受けやすいようにも思ったが、そうではないらしい。他のVIXなどは、サンプルが少なくて分布と言えるような形になってはいない。</p>
+<p>なお、今年のタックスディは４月１８日ということである。はたしてどうなるか。</p>
+<table border="0"><tr><br><img src="/2017/02/08/taxday-anomaly/taxday_anomaly.png" title="タックスディ前後の株価の動き" width="1200"><br></tr></table>
+
+<pre><code>import numpy as np
+import pandas as pd
+import pandas_datareader.data as web
+import datetime as dt
+import matplotlib.pyplot as plt
+#
+#from IPython.core.display import display, HTML
+#display(HTML(&quot;&lt;style&gt;.container { width:80% !important; }&lt;/style&gt;&quot;))
+
+start=&apos;1990-01-01&apos;
+gspc_ = web.DataReader(&apos;^GSPC&apos;, &apos;yahoo&apos;, start=start)
+dji_ = web.DataReader(&apos;^DJI&apos;, &apos;yahoo&apos;, start=start)
+vix_ = web.DataReader(&apos;^VIX&apos;, &apos;yahoo&apos;, start=start)
+xiv_ = web.DataReader(&apos;XIV&apos;, &apos;yahoo&apos;, start=start)
+vxx_ = web.DataReader(&apos;VXX&apos;, &apos;yahoo&apos;, start=start)
+
+gspc = gspc_.copy()
+dji = dji_.copy()
+vix = vix_.copy()
+xiv = xiv_.copy()
+vxx = vxx_.copy()
+#
+for c in [&apos;Open&apos;, &apos;High&apos;, &apos;Low&apos;, &apos;Close&apos;]:
+    xiv[c] = xiv[c]*xiv[&apos;Adj Close&apos;]/xiv[&apos;Close&apos;]
+    vxx[c] = vxx[c]*vxx[&apos;Adj Close&apos;]/vxx[&apos;Close&apos;]
+for c in [&apos;Open&apos;, &apos;High&apos;, &apos;Low&apos;, &apos;Adj Close&apos;, &apos;Volume&apos;]:
+    del gspc[c]
+    del dji[c]
+    del vix[c]
+    del xiv[c]
+    del vxx[c]
+gspc = gspc.rename(columns = {&apos;Close&apos;:&apos;sp500_Close&apos;})
+dji = dji.rename(columns = {&apos;Close&apos;:&apos;dji_Close&apos;})
+vix = vix.rename(columns = {&apos;Close&apos;:&apos;vix_Close&apos;})
+xiv = xiv.rename(columns = {&apos;Close&apos;:&apos;xiv_Close&apos;})
+vxx = vxx.rename(columns = {&apos;Close&apos;:&apos;vxx_Close&apos;})
+df = pd.concat([gspc, dji, vix, vxv, xiv, vxx], axis=1)
+df.columns
+
+
+taxday_list = [
+    &apos;1990-04-16&apos;,&apos;1991-04-15&apos;,&apos;1992-04-15&apos;,&apos;1993-04-15&apos;,&apos;1994-04-15&apos;,&apos;1995-04-17&apos;,&apos;1996-04-15&apos;,&apos;1997-04-15&apos;,&apos;1998-04-15&apos;,&apos;1999-04-15&apos;,
+    &apos;2000-04-17&apos;,&apos;2001-04-16&apos;,&apos;2002-04-15&apos;,&apos;2003-04-15&apos;,&apos;2004-04-15&apos;,&apos;2005-04-15&apos;,&apos;2006-04-17&apos;,&apos;2007-04-17&apos;,&apos;2008-04-15&apos;,&apos;2009-04-15&apos;,
+    &apos;2010-04-15&apos;,&apos;2011-04-18&apos;,&apos;2012-04-17&apos;,&apos;2013-04-15&apos;,&apos;2014-04-15&apos;,&apos;2015-04-15&apos;,&apos;2016-04-18&apos;,]
+
+def search(df, taxday):
+    for i, (idx, data) in enumerate(df.iterrows()):
+        if idx==taxday:
+            return df[i-5:i+5+1]
+    raise Exception()
+
+def read_date(s):
+    return dt.datetime.strptime(s, &apos;%Y-%m-%d&apos;)
+
+def calc(df):
+    dic = dict()
+    for taxday_str in taxday_list:
+        taxday = read_date(taxday_str)
+        df_prices = search(df, taxday)
+        for column in df_prices.columns:
+            if not column in dic:
+                dic[column] = list()
+            dic[column].append((taxday_str, (df_prices[column]/df_prices[column].values[5]).values))
+    return dic
+
+def draw(df, tickers=None):
+    dic = calc(df)
+    columns = dic.keys() if tickers is None else [t+&apos;_Close&apos; for t in tickers]
+    fig = plt.figure(figsize=(20, 8))
+    for i, k in enumerate(columns):
+        v = dic[k]
+        name = k[:-6] # == ticker
+        ax = fig.add_subplot(len(dic), 2, i*2+1)
+        ax.title.set_text(name+&apos;&apos;.format())
+        ax.grid()
+        for vv in v:
+            taxday, rs = vv
+            ax.plot(rs)
+        ra = [vv[1][6] for vv in v]
+        m = np.mean([vvv for vvv in ra if not np.isnan(vvv)])
+        bx = fig.add_subplot(len(dic), 2, i*2+2)
+        bx.title.set_text(name+&apos;: {}&apos;.format(m))
+        bx.grid()
+        bx.hist(ra, bins=50, range=[0.8, 1.2])
+
+draw(df, [&apos;sp500&apos;, &apos;dji&apos;, &apos;vix&apos;, &apos;vxx&apos;, &apos;xiv&apos;])
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;タックスディのアノマリー&quot;&gt;&lt;a href=&quot;#タックスディのアノマリー&quot; class=&quot;headerlink&quot; title=&quot;タックスディのアノマリー&quot;&gt;&lt;/a&gt;タックスディのアノマリー&lt;/h1&gt;&lt;p&gt;米国の確定申告締切日（”タックスディ”）から翌日にかけて株価
+    
+    </summary>
+    
+      <category term="米国株" scheme="http://fanannan.github.io/categories/%E7%B1%B3%E5%9B%BD%E6%A0%AA/"/>
+    
+    
+      <category term="米国株" scheme="http://fanannan.github.io/tags/%E7%B1%B3%E5%9B%BD%E6%A0%AA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vix-range</title>
+    <link href="http://fanannan.github.io/2017/02/02/vix-range/"/>
+    <id>http://fanannan.github.io/2017/02/02/vix-range/</id>
+    <published>2017-02-02T08:20:48.000Z</published>
+    <updated>2017-02-02T08:31:25.923Z</updated>
+    
+    <content type="html"><![CDATA[<p>VIX</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;VIX&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="VIX" scheme="http://fanannan.github.io/tags/VIX/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Yang-Zhangボラティリティ</title>
     <link href="http://fanannan.github.io/2017/02/01/yangzhang/"/>
     <id>http://fanannan.github.io/2017/02/01/yangzhang/</id>
     <published>2017-02-01T02:35:00.000Z</published>
-    <updated>2017-02-01T04:37:47.060Z</updated>
+    <updated>2017-02-08T06:24:06.845Z</updated>
     
     <content type="html"><![CDATA[<h1 id="ランダムウォークとボラティリティ"><a href="#ランダムウォークとボラティリティ" class="headerlink" title="ランダムウォークとボラティリティ"></a>ランダムウォークとボラティリティ</h1><p>株価や金利などの動きは、一般的な理論では、ランダムウォークに基づいていると言われる。<br>もちろん、厳密にそう言えるものかどうかという議論はたくさんあるが、いわゆる標準的なモデルでは、ランダムウォークが前提だし、株価や金利などの評価をするときには、まずはそこから始めなくてはならない。<br>ランダムウォークの動きを決めるのは、ボラティリティの大きさだ。ボラティリティの値を与えれば、株価や金利のクのシミュレーションを行うことができるし、逆に、実際の株価や金利の動き（経路）から、ボラティリティを推定することもできる。</p>
 <h1 id="一般的なボラティリティの推定方法"><a href="#一般的なボラティリティの推定方法" class="headerlink" title="一般的なボラティリティの推定方法"></a>一般的なボラティリティの推定方法</h1><p>株価を例に取ると、ある営業日の終値と、その前日の終値の変化率の対数を求め、そのデータを一定の計測期間について集めて標準偏差を計算するのが、ごく一般的な方法だ。たとえば、１か月間の株価のボラティリティを知りたければ、その株価の過去２０営業日分の日次の対数変化率を計測し、その標準偏差を求めて、比較しやすいよう、期間１年に相当するボラティリティに換算する。</p>
