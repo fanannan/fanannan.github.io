@@ -1,166 +1,108 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>有為転変</title>
-  
+
   <link href="/atom.xml" rel="self"/>
-  
+
   <link href="http://fanannan.github.io/"/>
-  <updated>2017-02-08T08:51:41.262Z</updated>
+  <updated>2017-02-08T06:30:16.517Z</updated>
   <id>http://fanannan.github.io/</id>
-  
+
   <author>
     <name>fanannan</name>
-    
+
   </author>
-  
+
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>VIXの上下幅</title>
-    <link href="http://fanannan.github.io/2017/02/08/vix-range/"/>
-    <id>http://fanannan.github.io/2017/02/08/vix-range/</id>
-    <published>2017-02-08T08:11:22.000Z</published>
-    <updated>2017-02-08T08:51:41.262Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="VIXのピークとボトムの動き"><a href="#VIXのピークとボトムの動き" class="headerlink" title="VIXのピークとボトムの動き"></a>VIXのピークとボトムの動き</h2><p>VIXの回帰性について、色々探ってみたがなかなか面白い結果は得られなかった。しかし、長い目でVIXの推移を眺めると、過去のピークやボトムの水準が長い間影響し続けるように見えてならない。</p>
-<p>理論的背景は全く無いが、過去営業日30、60、250日の間の日次の高値の90%タイル値、安値の10%タイル値を取って線を引いてみると、なかなかそれらしいガイドラインのようなものができる。当然のことながら、突発的に重大な事象があれば、高値の線を大きく超えることもああるだろうし、どういうことが起きるかわからない。ただ、それでも一定のレンジを示してくれるという意味で、少なくとも気持ちうえでは、こういうものも有用かもしれない。</p>
-<table border="0"><tr><br><img src="/2017/02/08/vix-range/vix_range.png" title="" width="1200"><br></tr></table>
 
-<pre><code>#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import numpy as np
-import pandas as pd
-import pandas.io as io
-import talib as ta
-import datetime as dt
-from pandas.io.data import DataReader
-from joblib import Memory
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-#
-memory = Memory(&apos;/tmp/&apos;)
-TICKER_LIST = [&apos;^VIX&apos;]
-
-
-@memory.cache()
-def read_yahoo_data(tickers):
-    lis = list()
-    for ticker in tickers:
-        df = DataReader(ticker, &apos;yahoo&apos;)
-        adjustment = df[&apos;Adj Close&apos;]/df[&apos;Close&apos;]
-        df[&apos;Open&apos;] *= adjustment
-        df[&apos;High&apos;] *= adjustment
-        df[&apos;Low&apos;] *= adjustment
-        df[&apos;Close&apos;] = df[&apos;Adj Close&apos;]
-        del df[&apos;Adj Close&apos;]
-        for c in df.columns:
-            df = df.rename(columns={c: ticker.replace(&apos;^&apos;, &apos;&apos;).lower()+&apos;_&apos;+c.replace(&apos; &apos;, &apos;&apos;).lower()})
-        lis.append(df)
-    df_aggregated = pd.concat(lis, axis=1)
-    return df_aggregated
-
-
-def get_vix_bands(df):
-    df_vix_high = df[&apos;vix_high&apos;]
-    df_vix_low = df[&apos;vix_low&apos;]
-    df_vix_close = df[&apos;vix_close&apos;]
-    df_top = df_vix_high.rolling(window=250, min_periods=3).quantile(0.9)
-    df_higher = df_vix_high.rolling(window=60, min_periods=3).quantile(0.9)
-    df_high = df_vix_high.rolling(window=30, min_periods=3).quantile(0.9)
-    df_low = df_vix_low.rolling(window=30, min_periods=3).quantile(0.1)
-    df_lower = df_vix_low.rolling(window=60, min_periods=3).quantile(0.1)
-    df_bottom = df_vix_low.rolling(window=250, min_periods=3).quantile(0.1)
-    return df_vix_high, df_vix_low, df_vix_close, df_top, df_higher, df_high, df_low, df_lower, df_bottom
-
-
-def draw_vix_bands(df, todays_high=None, todays_low=None, todays_close=None):
-    df = df.copy()
-    df_latest = pd.DataFrame([], index=[], columns=[&apos;vix_high&apos;, &apos;vix_low&apos;, &apos;vix_close&apos;])
-    if todays_high is not None or todays_low is not None or todays_close is not None:
-        today = dt.date.today()
-        df_latest = pd.DataFrame([[todays_high, todays_low, todays_close],
-                                     [np.nan, np.nan, np.nan],
-                                     [np.nan, np.nan, np.nan],
-                                     [np.nan, np.nan, np.nan],
-                                     [np.nan, np.nan, np.nan],
-                                     ],
-                              index=[today+dt.timedelta(days=n) for n in range(0, 5)],
-                              columns=[&apos;vix_high&apos;, &apos;vix_low&apos;, &apos;vix_close&apos;])
-        df = df.append(df_latest)
-    df_vix_high, df_vix_low, df_vix_close, df_top, df_higher, df_high, df_low, df_lower, df_bottom = get_vix_bands(df)
-    x = df.index
-    fig = plt.figure(figsize=(20,6))
-    ax = fig.add_subplot(1,1,1)
-    ax2 = ax.twinx()
-    ax.set_title(&apos;vix range&apos;)
-    ax.set_ylim((10, 50))
-    ax2.set_ylim((10, 50))
-    ax.set_xlim((x[0], x[-1]))
-    ax2.set_xlim((x[0], x[-1]))
-    ax2.fill_between(x, df_top.shift(1).values, df_bottom.shift(1).values, color=&apos;#888888&apos;, alpha=.1)
-    ax2.fill_between(x, df_higher.shift(1).values, df_lower.shift(1).values, color=&apos;#888888&apos;, alpha=.2)
-    ax2.fill_between(x, df_high.shift(1).values, df_low.shift(1).values, color=&apos;#888888&apos;, alpha=.4)
-    ax.plot(x, df_top.shift(1).values, color=&apos;#ff0000&apos;, alpha=0.4)
-    ax.plot(x, df_higher.shift(1).values, color=&apos;#dd0000&apos;, alpha=0.3)
-    ax.plot(x, df_high.shift(1).values, color=&apos;#880000&apos;, alpha=0.3)
-    ax.plot(x, df_low.shift(1).values, color=&apos;#008800&apos;, alpha=0.3)
-    ax.plot(x, df_lower.shift(1).values, color=&apos;#00dd00&apos;, alpha=0.3)
-    ax.plot(x, df_bottom.shift(1).values, color=&apos;#00ff00&apos;, alpha=0.4)
-    ax.plot(x, df_vix_close.values, linewidth=1.7, color=&apos;#0000ff&apos;, alpha=0.9)
-    ax.tick_params(axis=&apos;both&apos;, direction=&apos;out&apos;, width=1, length=5, labelsize=14, pad=8)
-    plt.yticks([10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 30, 35, 40, 45, 50])
-    ax.grid()
-    # ax.text(0, 0, &apos;top {}&apos;.format(df_top.shift(1).values[-15]),
-    #         horizontalalignment=&apos;center&apos;,
-    #         verticalalignment=&apos;bottom&apos;)
-    #ax.annotate(&apos;figure pixels&apos;, xy=(x[-1], close.values[-1]), xycoords=&apos;figure pixels&apos;)
-    #print(df.tail(12))
-    offset = -len(df_latest)
-    p = df_vix_close.values[offset]
-    print(&apos;top   : {0:2.2f}({1:02.2f}%)&apos;.format(df_top.shift(1).values[offset],
-                            A                   (df_top.shift(1).values[offset]/p-1)*100))
-    print(&apos;upper : {0:2.2f}({1:02.2f}%)&apos;.format(df_higher.shift(1).values[offset],
-                                               (df_higher.shift(1).values[offset]/p-1)*100))
-    print(&apos;up    : {0:2.2f}({1:02.2f}%)&apos;.format(df_high.shift(1).values[offset],
-                                               (df_high.shift(1).values[offset]/p-1)*100))
-    print(&apos;low   : {0:2.2f}({1:02.2f}%)&apos;.format(df_low.shift(1).values[offset],
-                                               (df_low.shift(1).values[offset]/p-1)*100))
-    print(&apos;lower : {0:2.2f}({1:02.2f}%)&apos;.format(df_lower.shift(1).values[offset],
-                                               (df_lower.shift(1).values[offset]/p-1)*100))
-    print(&apos;bottom: {0:2.2f}({1:02.2f}%)&apos;.format(df_bottom.shift(1).values[offset],
-                                               (df_bottom.shift(1).values[offset]/p-1)*100))
-    print(&apos;last  : {0:2.2f}&apos;.format(p))
-    fig.savefig(&apos;/tmp/vix_range_band.png&apos;)
-    plt.show()
-
-if True:
-    df = read_yahoo_data(TICKER_LIST)
-    print(df)
-    draw_vix_bands(df, todays_high=13.0, todays_low=12.0, todays_close=12.15)
-    exit()
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;VIXのピークとボトムの動き&quot;&gt;&lt;a href=&quot;#VIXのピークとボトムの動き&quot; class=&quot;headerlink&quot; title=&quot;VIXのピークとボトムの動き&quot;&gt;&lt;/a&gt;VIXのピークとボトムの動き&lt;/h2&gt;&lt;p&gt;VIXの回帰性について、色々探ってみたがなか
-    
-    </summary>
-    
-      <category term="VIX" scheme="http://fanannan.github.io/categories/VIX/"/>
-    
-    
-      <category term="VIX" scheme="http://fanannan.github.io/tags/VIX/"/>
-    
-  </entry>
-  
   <entry>
     <title>タックスディのアノマリー</title>
     <link href="http://fanannan.github.io/2017/02/08/taxday-anomaly/"/>
     <id>http://fanannan.github.io/2017/02/08/taxday-anomaly/</id>
     <published>2017-02-08T05:55:58.000Z</published>
     <updated>2017-02-08T06:30:16.517Z</updated>
-    
+
     <content type="html"><![CDATA[<hr>
 <h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・米国の確定申告締切日（”タックスディ”）から翌日にかけて、米国の株価指数が過去26年平均で51bp上昇するということが確認できた。</p>
 <hr>
@@ -258,32 +200,32 @@ def draw(df, tickers=None):
 
 draw(df, [&apos;sp500&apos;, &apos;dji&apos;, &apos;vix&apos;, &apos;vxx&apos;, &apos;xiv&apos;])
 </code></pre>]]></content>
-    
+
     <summary type="html">
-    
+
       &lt;hr&gt;
 &lt;h2 id=&quot;この記事に書いてあること&quot;&gt;&lt;a href=&quot;#この記事に書いてあること&quot; class=&quot;headerlink&quot; title=&quot;この記事に書いてあること&quot;&gt;&lt;/a&gt;この記事に書いてあること&lt;/h2&gt;&lt;p&gt;・米国の確定申告締切日（”タックスディ”）から翌日
-    
+
     </summary>
-    
+
       <category term="米国株" scheme="http://fanannan.github.io/categories/%E7%B1%B3%E5%9B%BD%E6%A0%AA/"/>
-    
+
       <category term="アノマリー" scheme="http://fanannan.github.io/categories/%E7%B1%B3%E5%9B%BD%E6%A0%AA/%E3%82%A2%E3%83%8E%E3%83%9E%E3%83%AA%E3%83%BC/"/>
-    
-    
+
+
       <category term="米国株" scheme="http://fanannan.github.io/tags/%E7%B1%B3%E5%9B%BD%E6%A0%AA/"/>
-    
+
       <category term="アノマリー" scheme="http://fanannan.github.io/tags/%E3%82%A2%E3%83%8E%E3%83%9E%E3%83%AA%E3%83%BC/"/>
-    
+
   </entry>
-  
+
   <entry>
     <title>VIXの回帰性のチェック</title>
     <link href="http://fanannan.github.io/2017/02/02/vix-autocorr/"/>
     <id>http://fanannan.github.io/2017/02/02/vix-autocorr/</id>
     <published>2017-02-02T08:20:48.000Z</published>
-    <updated>2017-02-08T08:40:27.367Z</updated>
-    
+    <updated>2017-02-08T06:58:48.915Z</updated>
+
     <content type="html"><![CDATA[<hr>
 <h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・VIXの回帰性を確認するために、ハースト指数、リアプノフ指数、偏自己相関などを評価したが、ぱっとしなかった。<br>・とりわけ、ハースト指数、リアプノフ指数の評価には、かなりのデータ数が必要なので、日次のデータでは無理がある。<br>・偏自己相関は使えそうに見えなくもないが、まあ、気のせいと言うほうが良い。</p>
 <hr>
@@ -320,28 +262,26 @@ draw(df, [&apos;sp500&apos;, &apos;dji&apos;, &apos;vix&apos;, &apos;vxx&apos;, 
 
 <p>偏自己相関がVIX指数の反転を示すシグナルとして使えそうに見えなくもないので、色々試してみると、偏自己相関が低く、かつ、VIX指数のYang-Zhangボラティリティが低い時に意味の有りそうな傾向が見つかった。しかし、該当する事象が少ないのと、偏自己相関を持ちださなくても同様の傾向が見られそうであることから、それ以上の検討は打ち切りとした。</p>
 ]]></content>
-    
+
     <summary type="html">
-    
+
       &lt;hr&gt;
 &lt;h2 id=&quot;この記事に書いてあること&quot;&gt;&lt;a href=&quot;#この記事に書いてあること&quot; class=&quot;headerlink&quot; title=&quot;この記事に書いてあること&quot;&gt;&lt;/a&gt;この記事に書いてあること&lt;/h2&gt;&lt;p&gt;・VIXの回帰性を確認するために、ハースト指数、リ
-    
+
     </summary>
-    
-      <category term="VIX" scheme="http://fanannan.github.io/categories/VIX/"/>
-    
-    
+
+
       <category term="VIX" scheme="http://fanannan.github.io/tags/VIX/"/>
-    
+
   </entry>
-  
+
   <entry>
     <title>Yang-Zhangボラティリティ</title>
     <link href="http://fanannan.github.io/2017/02/01/yangzhang/"/>
     <id>http://fanannan.github.io/2017/02/01/yangzhang/</id>
     <published>2017-02-01T02:35:00.000Z</published>
     <updated>2017-02-08T06:32:09.115Z</updated>
-    
+
     <content type="html"><![CDATA[<hr>
 <h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・Yang-Zhangによるボラティリティの計算式は、データとなる日数が少なくても比較的精度が高く有用だと思われる。</p>
 <hr>
@@ -456,30 +396,30 @@ for i in range(200):
 
 <p>左側のヒストグラムは観測期間20日(営業日での１か月に相当)、真ん中は100日、右は200日で、青が一般的な方法、赤がYang-Zhangの式によるものである。計算に使う情報の量が違うとは言え、数週間程度の短い期間ならまだしも、長い期間でもそれなりに大きな違いがあることは印象的だ。<br>１か月単位でボラティリティを計測するというのは、比較的ありがちなことだとは思うが、こうやって見てみると、誤差の大きさに改めて驚かされる。一般的な方法を使う場合の、ボラティリティ過小評価の危険は頭の片隅においておく必要がありそうだ。</p>
 ]]></content>
-    
+
     <summary type="html">
-    
+
       &lt;hr&gt;
 &lt;h2 id=&quot;この記事に書いてあること&quot;&gt;&lt;a href=&quot;#この記事に書いてあること&quot; class=&quot;headerlink&quot; title=&quot;この記事に書いてあること&quot;&gt;&lt;/a&gt;この記事に書いてあること&lt;/h2&gt;&lt;p&gt;・Yang-Zhangによるボラティリティの計算式
-    
+
     </summary>
-    
+
       <category term="株" scheme="http://fanannan.github.io/categories/%E6%A0%AA/"/>
-    
-    
+
+
       <category term="株" scheme="http://fanannan.github.io/tags/%E6%A0%AA/"/>
-    
+
       <category term="評価方法" scheme="http://fanannan.github.io/tags/%E8%A9%95%E4%BE%A1%E6%96%B9%E6%B3%95/"/>
-    
+
   </entry>
-  
+
   <entry>
     <title>クローク・トレード</title>
     <link href="http://fanannan.github.io/2017/01/27/cloak-trade/"/>
     <id>http://fanannan.github.io/2017/01/27/cloak-trade/</id>
     <published>2017-01-26T15:00:00.000Z</published>
     <updated>2017-01-27T22:34:31.594Z</updated>
-    
+
     <content type="html"><![CDATA[<hr>
 <h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・ファンドマネージャーによる恣意的なパフォーマンス操作について<br>・クローク・トレードとは何か<br>・日米の株式市場に、クローク・トレードは存在しそうか<br>・ファンドマネージャーのクローク・トレードについて窺えること</p>
 <hr>
@@ -520,21 +460,21 @@ for i in range(200):
 <p>これらを見ると、NYSEもNASDAQも、日本株ほど説明しやすい分布にはなっていなさそうだ。<br>NYSEについてはまだしも、NASDAQについては、ランダムな場合よりは裾野が広いとは言え、日本株ほど明確に(3)のパターンがあるとは言いづらい。</p>
 <h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>一般的に、月末には株が売られ、月初に株が買われるという傾向があることは良く知られている。ただ、それは、市場全般にわたっての話である。この記事で調べた範囲では、特にそうなりやすい銘柄と、そうでもない銘柄がありそうだということが窺われた。<br>この切り口から、銘柄の特性の違いをうまく運用方法に反映できないか、いくつかアイデアを試してはみたが、残念ながらすぐには見つからなかった。具体的に、どんなファンドマネージャーが、どんな銘柄をどんなタイミングで取引しているのか、生の情報が手元にないと、これ以上踏み込んでいくのは難しいかもしれない。</p>
 ]]></content>
-    
+
     <summary type="html">
-    
+
       &lt;hr&gt;
 &lt;h2 id=&quot;この記事に書いてあること&quot;&gt;&lt;a href=&quot;#この記事に書いてあること&quot; class=&quot;headerlink&quot; title=&quot;この記事に書いてあること&quot;&gt;&lt;/a&gt;この記事に書いてあること&lt;/h2&gt;&lt;p&gt;・ファンドマネージャーによる恣意的なパフォーマンス
-    
+
     </summary>
-    
+
       <category term="株" scheme="http://fanannan.github.io/categories/%E6%A0%AA/"/>
-    
-    
+
+
       <category term="株" scheme="http://fanannan.github.io/tags/%E6%A0%AA/"/>
-    
+
       <category term="運用方法" scheme="http://fanannan.github.io/tags/%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95/"/>
-    
+
   </entry>
-  
+
 </feed>

@@ -262,6 +262,264 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/08/vix-range/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="fanannan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="有為転変">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="有為転変" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/08/vix-range/" itemprop="url">
+                  VIXの上下幅
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">投稿日</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-08T17:11:22+09:00">
+                2017-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">post.in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VIX/" itemprop="url" rel="index">
+                    <span itemprop="name">VIX</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/08/vix-range/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://fanannan.github.io/2017/02/08/vix-range/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="VIXのピークとボトムの動き"><a href="#VIXのピークとボトムの動き" class="headerlink" title="VIXのピークとボトムの動き"></a>VIXのピークとボトムの動き</h2><p>VIXの回帰性について、色々探ってみたがなかなか面白い結果は得られなかった。しかし、長い目でVIXの推移を眺めると、過去のピークやボトムの水準が長い間影響し続けるように見えてならない。</p>
+<p>理論的背景は全く無いが、過去営業日30、60、250日の間の日次の高値の90%タイル値、安値の10%タイル値を取って線を引いてみると、なかなかそれらしいガイドラインのようなものができる。当然のことながら、突発的に重大な事象があれば、高値の線を大きく超えることもああるだろうし、どういうことが起きるかわからない。ただ、それでも一定のレンジを示してくれるという意味で、少なくとも気持ちうえでは、こういうものも有用かもしれない。</p>
+<table border="0"><tr><br><img src="/2017/02/08/vix-range/vix_range.png" title="" width="1200"><br></tr></table>
+
+<pre><code>#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import numpy as np
+import pandas as pd
+import pandas.io as io
+import talib as ta
+import datetime as dt
+from pandas.io.data import DataReader
+from joblib import Memory
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+#
+memory = Memory(&apos;/tmp/&apos;)
+TICKER_LIST = [&apos;^VIX&apos;]
+
+
+@memory.cache()
+def read_yahoo_data(tickers):
+    lis = list()
+    for ticker in tickers:
+        df = DataReader(ticker, &apos;yahoo&apos;)
+        adjustment = df[&apos;Adj Close&apos;]/df[&apos;Close&apos;]
+        df[&apos;Open&apos;] *= adjustment
+        df[&apos;High&apos;] *= adjustment
+        df[&apos;Low&apos;] *= adjustment
+        df[&apos;Close&apos;] = df[&apos;Adj Close&apos;]
+        del df[&apos;Adj Close&apos;]
+        for c in df.columns:
+            df = df.rename(columns={c: ticker.replace(&apos;^&apos;, &apos;&apos;).lower()+&apos;_&apos;+c.replace(&apos; &apos;, &apos;&apos;).lower()})
+        lis.append(df)
+    df_aggregated = pd.concat(lis, axis=1)
+    return df_aggregated
+
+
+def get_vix_bands(df):
+    df_vix_high = df[&apos;vix_high&apos;]
+    df_vix_low = df[&apos;vix_low&apos;]
+    df_vix_close = df[&apos;vix_close&apos;]
+    df_top = df_vix_high.rolling(window=250, min_periods=3).quantile(0.9)
+    df_higher = df_vix_high.rolling(window=60, min_periods=3).quantile(0.9)
+    df_high = df_vix_high.rolling(window=30, min_periods=3).quantile(0.9)
+    df_low = df_vix_low.rolling(window=30, min_periods=3).quantile(0.1)
+    df_lower = df_vix_low.rolling(window=60, min_periods=3).quantile(0.1)
+    df_bottom = df_vix_low.rolling(window=250, min_periods=3).quantile(0.1)
+    return df_vix_high, df_vix_low, df_vix_close, df_top, df_higher, df_high, df_low, df_lower, df_bottom
+
+
+def draw_vix_bands(df, todays_high=None, todays_low=None, todays_close=None):
+    df = df.copy()
+    df_latest = pd.DataFrame([], index=[], columns=[&apos;vix_high&apos;, &apos;vix_low&apos;, &apos;vix_close&apos;])
+    if todays_high is not None or todays_low is not None or todays_close is not None:
+        today = dt.date.today()
+        df_latest = pd.DataFrame([[todays_high, todays_low, todays_close],
+                                     [np.nan, np.nan, np.nan],
+                                     [np.nan, np.nan, np.nan],
+                                     [np.nan, np.nan, np.nan],
+                                     [np.nan, np.nan, np.nan],
+                                     ],
+                              index=[today+dt.timedelta(days=n) for n in range(0, 5)],
+                              columns=[&apos;vix_high&apos;, &apos;vix_low&apos;, &apos;vix_close&apos;])
+        df = df.append(df_latest)
+    df_vix_high, df_vix_low, df_vix_close, df_top, df_higher, df_high, df_low, df_lower, df_bottom = get_vix_bands(df)
+    x = df.index
+    fig = plt.figure(figsize=(20,6))
+    ax = fig.add_subplot(1,1,1)
+    ax2 = ax.twinx()
+    ax.set_title(&apos;vix range&apos;)
+    ax.set_ylim((10, 50))
+    ax2.set_ylim((10, 50))
+    ax.set_xlim((x[0], x[-1]))
+    ax2.set_xlim((x[0], x[-1]))
+    ax2.fill_between(x, df_top.shift(1).values, df_bottom.shift(1).values, color=&apos;#888888&apos;, alpha=.1)
+    ax2.fill_between(x, df_higher.shift(1).values, df_lower.shift(1).values, color=&apos;#888888&apos;, alpha=.2)
+    ax2.fill_between(x, df_high.shift(1).values, df_low.shift(1).values, color=&apos;#888888&apos;, alpha=.4)
+    ax.plot(x, df_top.shift(1).values, color=&apos;#ff0000&apos;, alpha=0.4)
+    ax.plot(x, df_higher.shift(1).values, color=&apos;#dd0000&apos;, alpha=0.3)
+    ax.plot(x, df_high.shift(1).values, color=&apos;#880000&apos;, alpha=0.3)
+    ax.plot(x, df_low.shift(1).values, color=&apos;#008800&apos;, alpha=0.3)
+    ax.plot(x, df_lower.shift(1).values, color=&apos;#00dd00&apos;, alpha=0.3)
+    ax.plot(x, df_bottom.shift(1).values, color=&apos;#00ff00&apos;, alpha=0.4)
+    ax.plot(x, df_vix_close.values, linewidth=1.7, color=&apos;#0000ff&apos;, alpha=0.9)
+    ax.tick_params(axis=&apos;both&apos;, direction=&apos;out&apos;, width=1, length=5, labelsize=14, pad=8)
+    plt.yticks([10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 30, 35, 40, 45, 50])
+    ax.grid()
+    # ax.text(0, 0, &apos;top {}&apos;.format(df_top.shift(1).values[-15]),
+    #         horizontalalignment=&apos;center&apos;,
+    #         verticalalignment=&apos;bottom&apos;)
+    #ax.annotate(&apos;figure pixels&apos;, xy=(x[-1], close.values[-1]), xycoords=&apos;figure pixels&apos;)
+    #print(df.tail(12))
+    offset = -len(df_latest)
+    p = df_vix_close.values[offset]
+    print(&apos;top   : {0:2.2f}({1:02.2f}%)&apos;.format(df_top.shift(1).values[offset],
+                            A                   (df_top.shift(1).values[offset]/p-1)*100))
+    print(&apos;upper : {0:2.2f}({1:02.2f}%)&apos;.format(df_higher.shift(1).values[offset],
+                                               (df_higher.shift(1).values[offset]/p-1)*100))
+    print(&apos;up    : {0:2.2f}({1:02.2f}%)&apos;.format(df_high.shift(1).values[offset],
+                                               (df_high.shift(1).values[offset]/p-1)*100))
+    print(&apos;low   : {0:2.2f}({1:02.2f}%)&apos;.format(df_low.shift(1).values[offset],
+                                               (df_low.shift(1).values[offset]/p-1)*100))
+    print(&apos;lower : {0:2.2f}({1:02.2f}%)&apos;.format(df_lower.shift(1).values[offset],
+                                               (df_lower.shift(1).values[offset]/p-1)*100))
+    print(&apos;bottom: {0:2.2f}({1:02.2f}%)&apos;.format(df_bottom.shift(1).values[offset],
+                                               (df_bottom.shift(1).values[offset]/p-1)*100))
+    print(&apos;last  : {0:2.2f}&apos;.format(p))
+    fig.savefig(&apos;/tmp/vix_range_band.png&apos;)
+    plt.show()
+
+if True:
+    df = read_yahoo_data(TICKER_LIST)
+    print(df)
+    draw_vix_bands(df, todays_high=13.0, todays_low=12.0, todays_close=12.15)
+    exit()
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/08/taxday-anomaly/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -560,6 +818,24 @@ draw(df, [&apos;sp500&apos;, &apos;dji&apos;, &apos;vix&apos;, &apos;vxx&apos;, 
             
           </span>
 
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">post.in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VIX/" itemprop="url" rel="index">
+                    <span itemprop="name">VIX</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1134,7 +1410,7 @@ for i in range(200):
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">記事</span>
             </a>
           </div>
@@ -1142,7 +1418,7 @@ for i in range(200):
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">カテゴリー</span>
               
             </div>
