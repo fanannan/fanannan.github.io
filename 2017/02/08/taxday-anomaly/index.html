@@ -69,7 +69,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="米国株," />
+  <meta name="keywords" content="米国株,アノマリー," />
 
 
 
@@ -89,20 +89,23 @@
 
 
 
-<meta name="description" content="タックスディのアノマリー米国の確定申告締切日（”タックスディ”）から翌日にかけて株価が上がるというアノマリーを発見したという論文（ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2910752 ）が出ていたので、簡単に確かめてみることにした。
-データ対象銘柄については、S&amp;amp;P500、ダウ・ジョーンズ、VIX、ついでにVXXとVIXと">
+<meta name="description" content="この記事に書いてあること・米国の確定申告締切日（”タックスディ”）から翌日にかけて、米国の株価指数が過去26年平均で51bp上昇するということが確認できた。
+
+タックスディのアノマリー米国の確定申告締切日（”タックスディ”）から翌日にかけて株価が上がるというアノマリーを発見したという論文（ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="タックスディのアノマリー">
 <meta property="og:url" content="http://fanannan.github.io/2017/02/08/taxday-anomaly/index.html">
 <meta property="og:site_name" content="有為転変">
-<meta property="og:description" content="タックスディのアノマリー米国の確定申告締切日（”タックスディ”）から翌日にかけて株価が上がるというアノマリーを発見したという論文（ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2910752 ）が出ていたので、簡単に確かめてみることにした。
-データ対象銘柄については、S&amp;amp;P500、ダウ・ジョーンズ、VIX、ついでにVXXとVIXと">
+<meta property="og:description" content="この記事に書いてあること・米国の確定申告締切日（”タックスディ”）から翌日にかけて、米国の株価指数が過去26年平均で51bp上昇するということが確認できた。
+
+タックスディのアノマリー米国の確定申告締切日（”タックスディ”）から翌日にかけて株価が上がるというアノマリーを発見したという論文（ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2">
 <meta property="og:image" content="http://fanannan.github.io/2017/02/08/taxday-anomaly/taxday_anomaly.png">
-<meta property="og:updated_time" content="2017-02-08T06:23:08.814Z">
+<meta property="og:updated_time" content="2017-02-08T06:30:16.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="タックスディのアノマリー">
-<meta name="twitter:description" content="タックスディのアノマリー米国の確定申告締切日（”タックスディ”）から翌日にかけて株価が上がるというアノマリーを発見したという論文（ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2910752 ）が出ていたので、簡単に確かめてみることにした。
-データ対象銘柄については、S&amp;amp;P500、ダウ・ジョーンズ、VIX、ついでにVXXとVIXと">
+<meta name="twitter:description" content="この記事に書いてあること・米国の確定申告締切日（”タックスディ”）から翌日にかけて、米国の株価指数が過去26年平均で51bp上昇するということが確認できた。
+
+タックスディのアノマリー米国の確定申告締切日（”タックスディ”）から翌日にかけて株価が上がるというアノマリーを発見したという論文（ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2">
 <meta name="twitter:image" content="http://fanannan.github.io/2017/02/08/taxday-anomaly/taxday_anomaly.png">
 
 
@@ -331,6 +334,17 @@
 
                 
                 
+                  、
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/米国株/アノマリー/" itemprop="url" rel="index">
+                    <span itemprop="name">アノマリー</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -366,9 +380,12 @@
       
 
       
-        <h1 id="タックスディのアノマリー"><a href="#タックスディのアノマリー" class="headerlink" title="タックスディのアノマリー"></a>タックスディのアノマリー</h1><p>米国の確定申告締切日（”タックスディ”）から翌日にかけて株価が上がるというアノマリーを発見したという論文（ <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2910752" target="_blank" rel="external">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2910752</a> ）が出ていたので、簡単に確かめてみることにした。</p>
-<h1 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h1><p>対象銘柄については、S&amp;P500、ダウ・ジョーンズ、VIX、ついでにVXXとVIXとし、株価データはYahoo Financeから取得する。また、タックスディの日付データは、<a href="https://www.timeanddate.com/holidays/us/tax-day" target="_blank" rel="external">https://www.timeanddate.com/holidays/us/tax-day</a> を参照して、1990年からの過去26年分について評価する。</p>
-<h1 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h1><p>下記左のチャートは、タックスディの終値を１としたときの、前後５日間の終値の推移を示したものである。また、右のチャートはタックスディの終値からその翌日終値までの変化率の分布を示したものである。</p>
+        <hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・米国の確定申告締切日（”タックスディ”）から翌日にかけて、米国の株価指数が過去26年平均で51bp上昇するということが確認できた。</p>
+<hr>
+<h2 id="タックスディのアノマリー"><a href="#タックスディのアノマリー" class="headerlink" title="タックスディのアノマリー"></a>タックスディのアノマリー</h2><p>米国の確定申告締切日（”タックスディ”）から翌日にかけて株価が上がるというアノマリーを発見したという論文（ <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2910752" target="_blank" rel="external">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2910752</a> ）が出ていたので、簡単に確かめてみることにした。</p>
+<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>対象銘柄については、S&amp;P500、ダウ・ジョーンズ、VIX、ついでにVXXとVIXとし、株価データはYahoo Financeから取得する。また、タックスディの日付データは、<a href="https://www.timeanddate.com/holidays/us/tax-day" target="_blank" rel="external">https://www.timeanddate.com/holidays/us/tax-day</a> を参照して、1990年からの過去26年分について評価する。</p>
+<h2 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h2><p>下記左のチャートは、タックスディの終値を１としたときの、前後５日間の終値の推移を示したものである。また、右のチャートはタックスディの終値からその翌日終値までの変化率の分布を示したものである。</p>
 <p>S&amp;P500に関しては、平均51bpのプラスで、上げる確率もまずまず高い。それと比べると、ダウ・ジョーンズについては、比較的弱い印象だ。大型株の方が影響を受けやすいようにも思ったが、そうではないらしい。他のVIXなどは、サンプルが少なくて分布と言えるような形になってはいない。</p>
 <p>なお、今年のタックスディは４月１８日ということである。はたしてどうなるか。</p>
 <table border="0"><tr><br><img src="/2017/02/08/taxday-anomaly/taxday_anomaly.png" title="タックスディ前後の株価の動き" width="1200"><br></tr></table>
@@ -484,6 +501,8 @@ draw(df, [&apos;sp500&apos;, &apos;dji&apos;, &apos;vix&apos;, &apos;vxx&apos;, 
           
             <a href="/tags/米国株/" rel="tag"># 米国株</a>
           
+            <a href="/tags/アノマリー/" rel="tag"># アノマリー</a>
+          
         </div>
       
 
@@ -491,8 +510,8 @@ draw(df, [&apos;sp500&apos;, &apos;dji&apos;, &apos;vix&apos;, &apos;vxx&apos;, 
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/02/vix-range/" rel="next" title="vix-range">
-                <i class="fa fa-chevron-left"></i> vix-range
+              <a href="/2017/02/02/vix-autocorr/" rel="next" title="VIXの回帰性のチェック">
+                <i class="fa fa-chevron-left"></i> VIXの回帰性のチェック
               </a>
             
           </div>
@@ -582,7 +601,7 @@ draw(df, [&apos;sp500&apos;, &apos;dji&apos;, &apos;vix&apos;, &apos;vxx&apos;, 
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">カテゴリー</span>
               
             </div>
@@ -591,7 +610,7 @@ draw(df, [&apos;sp500&apos;, &apos;dji&apos;, &apos;vix&apos;, &apos;vxx&apos;, 
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">タグ</span>
               
             </div>
@@ -653,7 +672,7 @@ draw(df, [&apos;sp500&apos;, &apos;dji&apos;, &apos;vix&apos;, &apos;vxx&apos;, 
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#タックスディのアノマリー"><span class="nav-number">1.</span> <span class="nav-text">タックスディのアノマリー</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#データ"><span class="nav-number">2.</span> <span class="nav-text">データ</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#結果"><span class="nav-number">3.</span> <span class="nav-text">結果</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#この記事に書いてあること"><span class="nav-number">1.</span> <span class="nav-text">この記事に書いてあること</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#タックスディのアノマリー"><span class="nav-number">2.</span> <span class="nav-text">タックスディのアノマリー</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#データ"><span class="nav-number">3.</span> <span class="nav-text">データ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#結果"><span class="nav-number">4.</span> <span class="nav-text">結果</span></a></li></ol></div>
             
 
           </div>
