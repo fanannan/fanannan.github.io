@@ -143,7 +143,7 @@ draw(df, [&apos;sp500&apos;, &apos;dji&apos;, &apos;vix&apos;, &apos;vxx&apos;, 
     <link href="http://fanannan.github.io/2017/02/02/vix-autocorr/"/>
     <id>http://fanannan.github.io/2017/02/02/vix-autocorr/</id>
     <published>2017-02-02T08:20:48.000Z</published>
-    <updated>2017-02-08T06:54:08.921Z</updated>
+    <updated>2017-02-08T06:58:48.915Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・VIXの回帰性を確認するために、ハースト指数、リアプノフ指数、偏自己相関などを評価したが、ぱっとしなかった。<br>・とりわけ、ハースト指数、リアプノフ指数の評価には、かなりのデータ数が必要なので、日次のデータでは無理がある。<br>・偏自己相関は使えそうに見えなくもないが、まあ、気のせいと言うほうが良い。</p>
