@@ -96,7 +96,8 @@
 <meta property="og:description" content="VIXのピークとボトムの動きVIXの回帰性について、色々探ってみたがなかなか面白い結果は得られなかった。しかし、長い目でVIXの推移を眺めると、過去のピークやボトムの水準が長い間影響し続けるように見えてならない。
 理論的背景は全く無いが、過去営業日30、60、250日の間の日次の高値の90%タイル値、安値の10%タイル値を取って線を引いてみると、なかなかそれらしいガイドラインのようなものができる。">
 <meta property="og:image" content="http://fanannan.github.io/2017/02/08/vix-range/vix_range.png">
-<meta property="og:updated_time" content="2017-02-08T08:51:41.262Z">
+<meta property="og:image" content="http://fanannan.github.io/2017/02/08/vix-range/vix_range_corr.png">
+<meta property="og:updated_time" content="2017-02-09T02:41:39.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VIXの上下幅">
 <meta name="twitter:description" content="VIXのピークとボトムの動きVIXの回帰性について、色々探ってみたがなかなか面白い結果は得られなかった。しかし、長い目でVIXの推移を眺めると、過去のピークやボトムの水準が長い間影響し続けるように見えてならない。
@@ -368,6 +369,9 @@
 <p>理論的背景は全く無いが、過去営業日30、60、250日の間の日次の高値の90%タイル値、安値の10%タイル値を取って線を引いてみると、なかなかそれらしいガイドラインのようなものができる。当然のことながら、突発的に重大な事象があれば、高値の線を大きく超えることもああるだろうし、どういうことが起きるかわからない。ただ、それでも一定のレンジを示してくれるという意味で、少なくとも気持ちうえでは、こういうものも有用かもしれない。</p>
 <table border="0"><tr><br><img src="/2017/02/08/vix-range/vix_range.png" title="" width="1200"><br></tr></table>
 
+<p>各線の値に対して、その後３日間と５日間のVIXの変動をチャートにしてみると次のようになる。<br>左側から３つの高値安値の幅の中でVIX指数の現在の位置を比較しているものが有用だと思っていたが、安値のほうに集まりすぎていて、期待ほどにはぱっとしない。左から４つ目の250day-high ratioは、横軸にVIX指数の過去営業日250日の日次の高値の90%タイル値とVIX指数の値の比の対数、縦軸にVIXの５日間対数変化率をプロットしたもので、ばらつきは大きい物の、かなりはっきりとした相関が見える。同様に、250day-low ratioもそれなりの形をしている。</p>
+<table border="0"><tr><br><img src="/2017/02/08/vix-range/vix_range_corr.png" title="" width="1200"><br></tr></table>
+
 <pre><code>#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -476,10 +480,49 @@ def draw_vix_bands(df, todays_high=None, todays_low=None, todays_close=None):
     fig.savefig(&apos;/tmp/vix_range_band.png&apos;)
     plt.show()
 
+def identity(x):
+    return x
+
+def prepare_data(df, config):
+    df = df.copy().dropna().drop_duplicates()
+    #
+    df_vix_high, df_vix_low, df_vix_close, df_top, df_higher, df_high, df_low, df_lower, df_bottom = get_vix_bands(df)
+    for lookback in range(-5, 5+1):
+        df[&apos;pc{}&apos;.format(lookback)] = (df_vix_close.shift(lookback)/df_vix_close.shift(lookback+1)).apply(np.log)
+    for lookback in range(1, 3+1):
+        df[&apos;rc{}&apos;.format(lookback*10)] = (df_vix_close/df_vix_close.shift(lookback)).apply(np.log)
+    for df_add, f, name in [
+        ((df_vix_close-df_bottom)/(df_top-df_bottom), identity, &apos;250day band&apos;),
+        ((df_vix_close-df_lower)/(df_higher-df_lower), identity, &apos;60day band&apos;),
+        ((df_vix_close-df_low)/(df_high-df_low), identity, &apos;30day band&apos;),
+        (df_top/df_vix_close, np.log, &apos;250day-high ratio&apos;),
+        (df_higher/df_vix_close, np.log, &apos;50day-high ratio&apos;),
+        (df_high/df_vix_close, np.log, &apos;30day-high ratio&apos;),
+        (df_vix_close/df_bottom, np.log, &apos;30day-low ratio&apos;),
+        (df_vix_close/df_lower, np.log, &apos;60day-low ratio&apos;),
+        (df_vix_close/df_low, np.log, &apos;250day-low ratio&apos;),
+        ((df_vix_high-df_vix_close)/(df_vix_high-df_vix_low), identity, &apos;daily_high_low_position&apos;),]:
+        s = df_add.apply(f)
+        s.name = name
+        df = pd.concat([df, s], axis=1)
+    return df
+
 if True:
     df = read_yahoo_data(TICKER_LIST)
     print(df)
     draw_vix_bands(df, todays_high=13.0, todays_low=12.0, todays_close=12.15)
+    #
+    df_data = prepare_data(df, {})
+    fig = plt.figure(figsize=(20,4))
+    bands = [&apos;250day band&apos;, &apos;60day band&apos;,
+           &apos;30day band&apos;, &apos;250day-high ratio&apos;, &apos;50day-high ratio&apos;,
+           &apos;30day-high ratio&apos;, &apos;30day-low ratio&apos;, &apos;60day-low ratio&apos;,
+           &apos;250day-low ratio&apos;,]
+    for i, k in enumerate(bands):
+        ax = fig.add_subplot(1, len(bands), i+1)
+        ax.grid()
+        ax.title.set_text(k)
+        ax.scatter(df_data[k], df_data[&apos;pc-5&apos;], s=4, alpha=0.2)
     exit()
 </code></pre>
       
