@@ -262,6 +262,365 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/09/gold-on-fridays/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="fanannan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="有為転変">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="有為転変" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/09/gold-on-fridays/" itemprop="url">
+                  週末に金が上がる傾向があることの確認
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">投稿日</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T07:36:14+09:00">
+                2017-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">post.in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/コモディティ/" itemprop="url" rel="index">
+                    <span itemprop="name">コモディティ</span>
+                  </a>
+                </span>
+
+                
+                
+                  、
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/コモディティ/金/" itemprop="url" rel="index">
+                    <span itemprop="name">金</span>
+                  </a>
+                </span>
+
+                
+                
+                  、
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/コモディティ/金/米国株/" itemprop="url" rel="index">
+                    <span itemprop="name">米国株</span>
+                  </a>
+                </span>
+
+                
+                
+                  、
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/コモディティ/金/米国株/アノマリー/" itemprop="url" rel="index">
+                    <span itemprop="name">アノマリー</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/09/gold-on-fridays/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://fanannan.github.io/2017/02/09/gold-on-fridays/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・金価格が金曜日から月曜にかけて上がる傾向は確認できたが、分散が大きくそれだけではなんとも。<br>・木曜日の状況を加味すると、傾向が強まる印象はあるので、条件を検討すれば有用かもしれないが、実用に向くほどではない。</p>
+<hr>
+<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>週末や休日の前に、金融資産の価格がどのように動くかは、その時々の市場の情勢を象徴的に示すことがあるように思える時がある。週末や休日の間、リスク資産を持ちたくないという気持ちが強ければ、金やVIX、国債などに動きがあることも考えられる。</p>
+<p>いろいろな金融資産について、曜日別のアノマリーについて検討した論文( <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912112" target="_blank" rel="external">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912112</a> )<br>において、金が一番強い（確実性が高そうな）曜日別アノマリーがあり、金曜日に値上がりをするという記載があったので、簡単に確かめてみることにした。</p>
+<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>データにはYahoo Financeの日次データを利用した。金価格の動向を反映する資産としては、金のETFであるGLD、金鉱株のETFであるGLDを用いた。</p>
+<h2 id="曜日別動向"><a href="#曜日別動向" class="headerlink" title="曜日別動向"></a>曜日別動向</h2><p>月曜日を１、金曜日を５とした曜日別の変化率は下記のチャートの通りである。論文で有意性が確認されている通り、確かにGLDは金曜日に（木曜日終値から金曜日終値にかけて）一番上げているが、平均は14bpと小さく、標準偏差は124bpと非常にぶれが大きい。また、GDXに関しては月曜日に下げ、水曜日に上げる傾向のほうが、金曜日の動きよりも大きい。</p>
+<table border="0"><tr><br><img src="/2017/02/09/gold-on-fridays/dists.png" title="金ETFおよび金鉱株ETFの曜日別価格変化" width="1200"><br></tr></table>
+
+<p>次に、金曜日の前日である木曜日に、S&amp;P500やVIX、金融株のETFであるXLFがどう動いたかを横軸とし、縦軸に金曜日のGLDとGDXの変化を見ると、木曜日にVIXがあげたら金曜日に金が買われる傾向が若干強いように見える。ただ、ばらつきが大きいことには変わりがないので、これだけでは有用とは言えない。色々な要素を組み合わせると、傾向はもっと強くなるかもしれないが、インドや中国、中東の金需要など季節要因となる重要な要素は多いので、まあ、こんなものというところであろう。</p>
+<table border="0"><tr><br><img src="/2017/02/09/gold-on-fridays/scatters.png" title="木曜日のS&P500、VIX、XLFの動きと金ETFおよび金鉱株ETFの金曜日の価格変化" width="1200"><br></tr></table>
+
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/09/intraday-pattern/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="fanannan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="有為転変">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="有為転変" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/09/intraday-pattern/" itemprop="url">
+                  米国株の朝の価格動向は夕方の価格動向に影響するか
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">投稿日</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T07:35:41+09:00">
+                2017-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">post.in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/米国株/" itemprop="url" rel="index">
+                    <span itemprop="name">米国株</span>
+                  </a>
+                </span>
+
+                
+                
+                  、
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/米国株/アノマリー/" itemprop="url" rel="index">
+                    <span itemprop="name">アノマリー</span>
+                  </a>
+                </span>
+
+                
+                
+                  、
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/米国株/アノマリー/イントラディ/" itemprop="url" rel="index">
+                    <span itemprop="name">イントラディ</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/09/intraday-pattern/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://fanannan.github.io/2017/02/09/intraday-pattern/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・米国株式市場において、朝の時間帯の株価の動きが、夕方の株価の動きと相関を持つという論文が幾つかある。<br>・しかし、運用のシミュレーションをすると上手く行かないという報告があるので、違う見方をしてみたが、やはり駄目そうだ。<br>・とは言え、個別銘柄では難しいにしても、指数で精査すれば何か面白いことがあるかもしれない。</p>
+<hr>
+<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>米国株式市場において、朝オープン直後の時間帯、例えば9:30から10:00までの価格の動きと、夕方の時間帯15:30から16:00までの価格の動きに正の相関が高いということを報告した論文をこれまで幾つか目にしてきた。</p>
+<p>朝の時間帯の取り方にはバリエーションが色々あり、12:00までとしたり、前日の終値からの変化を見たりするものもある。夕方の時間帯については、15:00から15:30までの動きは、朝の時間帯と逆相関、すなわち、15:30から16:00までの時間帯とも逆相関が見られるという見解で概ね一致している。</p>
+<p>今回参照した論文（ <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2905713" target="_blank" rel="external">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2905713</a> ）では、この特性を利用して、運用のシミュレーションを試みているが、うまく行っていない。そこでは、日次で朝の時間帯に値動きの大きい銘柄を選んで、当該銘柄を夕方取引するとどうなるかというやり方がなされている。<br>ここでは、そもそも朝の時間帯と夕方の時間帯で相関の高い銘柄とそうでない銘柄が存在するのではないかと考えて、状況を確認してみたい。</p>
+<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>データにはStooqの５分足データを使用した。対象銘柄は、Stooqに収録されている米国市場の全銘柄（ETFを含む）で、対象期間としては、これまでダウンロードして手元にあるStooqのデータから過去２年分から利用できた範囲（銘柄によりばらつきあり）である。流動性のない銘柄では、５分足の値が存在しないことがあるが、その場合は、当該日のデータそのものが存在しないこととした。</p>
+<h2 id="検討結果"><a href="#検討結果" class="headerlink" title="検討結果"></a>検討結果</h2><p>銘柄別に日次で、9:30から10:00、9:30から12:00、12:00から13:00のそれぞれの時間帯の値動きと15:30から16:00までの値動きの相関を算出し、最も高いものを２つ選び出し時間帯別に左から並べたのが、下記のチャートである。<br>一番相関が高かった上段のEEPでも相関は63%、下段のPAGPで58%で、それも見た通りの程度である。他の銘柄では、ばらつきはもっと大きく、このような多少でも相関が見えるような感じにはならない。銘柄別に見て、特に相関が高いグループがあるようでもないので、銘柄を特定することによってシミュレーションの成績が大きく改善するとは考えにくい。<br>ただし、全体として、朝と夕方の米国株式市場の動きに関係がありそうなのは変わりがないので、指数の動きについては掘り下げて見ると面白いことがあるかもしれない。</p>
+<table border="0"><tr><br><img src="/2017/02/09/intraday-pattern/eep.png" title="EEP" width="1200"><br></tr><tr><br><img src="/2017/02/09/intraday-pattern/pagp.png" title="PAGP" width="1200"><br>
+
+</tr></table>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/08/vix-range/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -935,443 +1294,13 @@ draw(df, [&apos;sp500&apos;, &apos;dji&apos;, &apos;vix&apos;, &apos;vxx&apos;, 
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/01/yangzhang/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="fanannan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="有為転変">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="有為転変" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/01/yangzhang/" itemprop="url">
-                  Yang-Zhangボラティリティ
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">投稿日</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-01T11:35:00+09:00">
-                2017-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">post.in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/株/" itemprop="url" rel="index">
-                    <span itemprop="name">株</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/02/01/yangzhang/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://fanannan.github.io/2017/02/01/yangzhang/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・Yang-Zhangによるボラティリティの計算式は、データとなる日数が少なくても比較的精度が高く有用だと思われる。</p>
-<hr>
-<h2 id="ランダムウォークとボラティリティ"><a href="#ランダムウォークとボラティリティ" class="headerlink" title="ランダムウォークとボラティリティ"></a>ランダムウォークとボラティリティ</h2><p>株価や金利などの動きは、一般的な理論では、ランダムウォークに基づいていると言われる。<br>もちろん、厳密にそう言えるものかどうかという議論はたくさんあるが、いわゆる標準的なモデルでは、ランダムウォークが前提だし、株価や金利などの評価をするときには、まずはそこから始めなくてはならない。<br>ランダムウォークの動きを決めるのは、ボラティリティの大きさだ。ボラティリティの値を与えれば、株価や金利のクのシミュレーションを行うことができるし、逆に、実際の株価や金利の動き（経路）から、ボラティリティを推定することもできる。</p>
-<h2 id="一般的なボラティリティの推定方法"><a href="#一般的なボラティリティの推定方法" class="headerlink" title="一般的なボラティリティの推定方法"></a>一般的なボラティリティの推定方法</h2><p>株価を例に取ると、ある営業日の終値と、その前日の終値の変化率の対数を求め、そのデータを一定の計測期間について集めて標準偏差を計算するのが、ごく一般的な方法だ。たとえば、１か月間の株価のボラティリティを知りたければ、その株価の過去２０営業日分の日次の対数変化率を計測し、その標準偏差を求めて、比較しやすいよう、期間１年に相当するボラティリティに換算する。</p>
-<p>ただ、この方法だと、計測期間が短い場合には、精度がでない。過去２日間や３日間では、データが少なすぎて、ボラティリティが適切に計算できるはずがない。とりわけ、終値があまり動かなくても、実際には日中の価格変動が大きくなっているとしても、そうした状況は一般的な計算方法では全く評価できない。</p>
-<h2 id="Yang-Zhangボラティリティ"><a href="#Yang-Zhangボラティリティ" class="headerlink" title="Yang-Zhangボラティリティ"></a>Yang-Zhangボラティリティ</h2><p>日次の株価のデータとして、終値だけでなく、始値、高値、安値、終値を活用し、夜間や日中の動きを反映したボラティリティを計測する方法がある。それらのなかでも、もっとも良い方法とされているのが、Yang-Zhangの式である。困ったことに、元論文を見失ってしまったので、計算方法は後述のpythonでの実装を見てほしい。一点、気をつけるべきところは、式の中に定数が入ってくるところで、これは、確か米国市場における市場の開いている時間とそれ以外の時間の長さによって決まる数値であったと記憶している。</p>
-<h2 id="特性の確認"><a href="#特性の確認" class="headerlink" title="特性の確認"></a>特性の確認</h2><p>さて、では、このYang-Zhangの式によるボラティリティの推定法が、一般的な推定法と比べて、どう違うのか簡単なシミュレーションで比べてみたい。<br>まずは、１年間の株価の動きを年率上昇率10%、ボラティリティ10%のランダムウォークとして生成する。ここでは、営業日252日として、その間昼も夜も関係なく、30分刻みで株価が動き続けるものと想定している。</p>
-<pre><code>import numpy as np
-import math
-import pandas as pd
-import matplotlib.pyplot as plt
-
-INIT_PRICE = 100.0
-AVERAGE_RETURN = 0.1
-VOLATILITY = 0.1
-DAYS_PER_YEAR = 252
-UNITS_PER_DAY = 48
-NUM_UNITS = DAYS_PER_YEAR*UNITS_PER_DAY
-CLOSING_TIME_OFFSET = 13 # 6.5 hours x 2
-
-def make_price_movement(init_price, average_return, volatility, num_units):
-    returns = np.random.normal(average_return/num_units, volatility/math.sqrt(num_units), num_units)
-    price_list = [init_price]
-    for x in returns:
-        price_list.append(price_list[-1]*(1.0+x))
-    return price_list
-
-price_movement = make_price_movement(INIT_PRICE, AVERAGE_RETURN, VOLATILITY, NUM_UNITS)
-fig = plt.figure(figsize=(24, 8))
-ax1 = fig.add_subplot(1,2,1)
-ax1.plot(price_movement)
-plt.show()
-</code></pre><p>これにより、次のチャートのような株価の経路が生成できる。当然、実行するたびに違う経路ができる。</p>
-<table border="0"><tr><br><img src="/2017/02/01/yangzhang/simulated.png" title="ランダムウォークによる株価経路" width="500"><br></tr></table>
-
-
-<p>Yang-Zhangの計算式の実装例がGithubにあったので、ここではそれをそのまま引用させていただくことにする。</p>
-<pre><code># https://github.com/jasonstrimpel/volatility-trading/tree/master/volatility/models
-
-def YangZhang(prices, window=30):
-    log_ho = (prices[&apos;High&apos;] / prices[&apos;Open&apos;]).apply(np.log)
-    log_lo = (prices[&apos;Low&apos;] / prices[&apos;Open&apos;]).apply(np.log)
-    log_co = (prices[&apos;Close&apos;] / prices[&apos;Open&apos;]).apply(np.log)
-    log_oc = (prices[&apos;Open&apos;] / prices[&apos;Close&apos;].shift(1)).apply(np.log)
-    log_oc_sq = log_oc**2
-    log_cc = (prices[&apos;Close&apos;] / prices[&apos;Close&apos;].shift(1)).apply(np.log)
-    log_cc_sq = log_cc**2
-    rs = log_ho * (log_ho - log_co) + log_lo * (log_lo - log_co)
-    close_vol = log_cc_sq.rolling(window=window,center=False).sum() * (1.0 / (window - 1.0))
-    open_vol = log_oc_sq.rolling(window=window,center=False).sum() * (1.0 / (window - 1.0))
-    window_rs = rs.rolling(window=window,center=False).sum() * (1.0 / (window - 1.0))
-    result = (open_vol + 0.164333 * close_vol + 0.835667 * window_rs).apply(np.sqrt) * math.sqrt(252)
-    result[:window-1] = np.nan
-    return result
-</code></pre><p>次に、ある株価の経路が与えられたときに、それを観測して、日次のデータを取り出すコードを用意する。</p>
-<pre><code>def observe_close_only(price_movement, units_per_day):
-    r = list()
-    for i in range(0, len(price_movement)-1, units_per_day):
-        r.append(price_movement[i])
-    df = pd.DataFrame(r, index=range(0, len(r)), columns=[&apos;Close&apos;])
-    return df
-
-def observe_olhc_only(price_movement, units_per_day, closing_time_offset):
-    o, h, l, c = list(), list(), list(), list()
-    for i in range(0, len(price_movement)-1, units_per_day):
-        o.append(price_movement[i])
-        h.append(max(price_movement[i+1:i+closing_time_offset+1]))
-        l.append(min(price_movement[i+1:i+closing_time_offset+1]))
-        c.append(price_movement[i+closing_time_offset])
-    df = pd.DataFrame({&apos;Open&apos;: o, &apos;High&apos;: h, &apos;Low&apos;: l, &apos;Close&apos;: c}, index=range(0, len(o)))
-    return df
-
-def measure_YangZhang(df_ohlc):
-    result = list()
-    for i in range(2, len(df_ohlc)):
-        est = YangZhang(df_ohlc.iloc[-i-1:, :], i)
-        result.append(est.values[-1])
-    return result
-
-def measure_ordinal(df_close_only):
-    ret = (df_close_only/df_close_only.shift(1)).apply(np.log).dropna()
-    result = list()
-    for i in range(2, len(ret)):
-        est = ret[:i].std()*math.sqrt(DAYS_PER_YEAR)
-        result.append(est)
-    return result
-</code></pre><p>最後に、200本の経路を生成させて、観測期間別の状況を見てみよう。</p>
-<pre><code>fig = plt.figure(figsize=(24, 8))
-ax1 = fig.add_subplot(1,2,1)
-ax2 = fig.add_subplot(1,2,2)
-ax1.set_title(&apos;ordinal&apos;)
-ax2.set_title(&apos;YangZhang&apos;)
-ax1.set_ylim((0.0, 0.25))
-ax2.set_ylim((0.0, 0.25))
-est_ordinal_list = list()
-est_YangZhang_list= list()
-for i in range(200):
-    price_movement = make_price_movement(INIT_PRICE, AVERAGE_RETURN, VOLATILITY, NUM_UNITS)
-    df_close_only = observe_close_only(price_movement, UNITS_PER_DAY)
-    df_ohlc = observe_olhc_only(price_movement, UNITS_PER_DAY, CLOSING_TIME_OFFSET)
-    est_ordinal = measure_ordinal(df_close_only)
-    est_YangZhang = measure_YangZhang(df_ohlc)
-    est_ordinal_list.append(est_ordinal)
-    est_YangZhang_list.append(est_YangZhang)
-    ax1.plot(est_ordinal, alpha=0.05)
-    ax2.plot(est_YangZhang, alpha=0.05)
-</code></pre><table border="0"><tr><br><img src="/2017/02/01/yangzhang/yangzhang.png" title="観測期間による推定ボラティリティ" width="1200"><br></tr></table>
-
-<p>左が一般的な方法、右側がYang-Zhangの式によるものである。いずれも縦軸が推定されたボラティリティを、横軸が観測期間（＝データの数）である。いずれも観測期間が長くなるに連れて、はじめに設定したボラティリティに近い値を推定できている。<br>ひと目で分かるのは、一般的な方法では観測期間が数日しかない場合、終値に動きが現れないケースに対応して、非常に低い推定値になってしまうことがあるのに対し、Yang-Zhangの方では、始値、高値、安値の情報も活用することにより、過小評価を起こしにくいことである。<br>さらに、一般的な方法では、観測期間が100日くらいでもかなりばらつきが見られるのに、Yang-Zhangの方では大分収束が進んでいる。わかりやすいようにサンプルパスの数を2000にして、ヒストグラムで見ると、次のようになる。</p>
-<table border="0"><tr><br><img src="/2017/02/01/yangzhang/distribution.png" title="観測期間によるボラティリティ推定誤差分布" width="1200"><br></tr></table>
-
-<p>左側のヒストグラムは観測期間20日(営業日での１か月に相当)、真ん中は100日、右は200日で、青が一般的な方法、赤がYang-Zhangの式によるものである。計算に使う情報の量が違うとは言え、数週間程度の短い期間ならまだしも、長い期間でもそれなりに大きな違いがあることは印象的だ。<br>１か月単位でボラティリティを計測するというのは、比較的ありがちなことだとは思うが、こうやって見てみると、誤差の大きさに改めて驚かされる。一般的な方法を使う場合の、ボラティリティ過小評価の危険は頭の片隅においておく必要がありそうだ。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/01/27/cloak-trade/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="fanannan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="有為転変">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="有為転変" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/27/cloak-trade/" itemprop="url">
-                  クローク・トレード
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">投稿日</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-27T00:00:00+09:00">
-                2017-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">post.in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/株/" itemprop="url" rel="index">
-                    <span itemprop="name">株</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/01/27/cloak-trade/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://fanannan.github.io/2017/01/27/cloak-trade/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・ファンドマネージャーによる恣意的なパフォーマンス操作について<br>・クローク・トレードとは何か<br>・日米の株式市場に、クローク・トレードは存在しそうか<br>・ファンドマネージャーのクローク・トレードについて窺えること</p>
-<hr>
-<h2 id="ちょっと長い前置き"><a href="#ちょっと長い前置き" class="headerlink" title="ちょっと長い前置き"></a>ちょっと長い前置き</h2><p>筆者は以前の職場で、ある種の機関投資家向けファンドの投資を検討する際に、アメリカの大手のファンドマネージャーがどのように銘柄の入れ替えを行っているかを細かくチェックしていた。機関投資家は、その気になれば色々資料が手に入るものだ。<br>普通に考えれば、ファンドマネージャーとしては、ファンドの成績を上げるために、値段が上がるであろう銘柄を購入してファンドに入れ、値段が下がるであろう銘柄を売却するはずである。しかし、実際にファンドマネージャーが行う取引を見ていくと、色々と面白い発見があった。</p>
-<p>ファンドの種類にもよるが、一般的には、ファンドにおいてどんな銘柄をどれだけ保有しても良い、あるいは逆に保有してはいけないという条件が設定されている。例えば、社債に投資するファンドがあるとしよう。そんな場合、ファンドマネージャーは、ファンドに設定された投資金額のうち、格付機関による信用格付が一定以上の銘柄を何％以上保有しなければならないとか、社債の価格が幾ら以上のものが何％以上でないといけないとかいうような、予め設定された条件を守らなくてはならない。また、ポートフォリオの分散を図るために、一定の算式による業種分散スコア（diversity score）がある水準以上でなければならないとか、またさらに、ある水準以上を達成していれば、より自由に、より緩い条件のもとでファンドマネージャーの裁量で取引をしても良いというようなことになっていたりもする。</p>
-<p>これらの条件は、本来の趣旨としては、投資家に対して、ファンドの目的に沿った投資運用活動を約束し、ひいてはより確実に成績を上げることを目指し設定されているはずである。また、ファンドマネージャーが適切にファンドの趣旨の通りに運用活動をしているかどうか、投資家によるモニタリングをしやすくするためのもののはずである。</p>
-<p>ところが、実際はどうか。<br>ファンドマネージャーは、これらの条件を守りながら、全く”合法的”にファンドの成績を操作することがある。例えば、一定以下の信用格付の銘柄を購入してはいけないという条件があったとしても、それはあくまでも購入の時点での条件でしかない。だから、急激に信用力が悪化していて、今後も引き続き悪化することがほぼ明らかな銘柄であっても（多くの場合信用格付は社債価格や株価など市場の動きより遅いし、格付機関のなかでも判断の早い遅いがあるので、ある程度予見可能である）、個別のファンドに設定されている条件に反していない限り、ファンドマネージャーはそういう銘柄を購入してもよい。<br>だから、ファンドマネージャー自身が重要だと思っているファンド（例えば重要な顧客が投資しているとか、看板商品であるとか）のなかに、今後パフォーマンスが悪くなりそうな銘柄があり、重要だと思っていないファンドにそういう銘柄を持たすことができるのなら、重要なファンドから重要でないファンドにそういう銘柄を移せば、重要なファンドの成績を守ることができるのである。</p>
-<p>筆者らは、そういう重要でないファンドのことを”ゴミ箱”と呼んでいた。ゴミ箱であるかどうかは、世間の評価とは直接は関係ない。市場の状況が良ければ、ゴミ箱やゴミ箱予備軍も良い成績を出すし、ファンドマネージャーとしても扱っているファンド全ての成績が良いに越したことはない。しかし、状況が悪くなれば、優遇されているファンドとゴミ箱との違いは明らかになる。とりわけ、ファンドに優先劣後構造がある場合、最劣後の部分を投資している投資家にとっては、極めて重大な問題になるが、契約上設定された条件を守っている限り、ファンドマネージャーには落ち度はないということになる。</p>
-<p>もう一点、分散スコアについても触れておこう。一般に、分散スコアを向上させるためには、銘柄の産業分散を図れば良いが、そもそも産業分類というのは、かなり恣意的なものである。端的に言えば、環境関連のビジネスがひとつの業種として定義されている場合、その範疇に入る企業の数は極めて限られる。したがって、そこらじゅうの似たようなファンドで、環境関連の特定の銘柄が保有されることになる。投資家としては、分散スコアの良いファンドをたくさん保有して、より分散を図っているつもりであっても、全体をよく見わたせば、特定の銘柄をたっぷり抱えていることになっているかもしれないわけだ。そこで仮にそういう銘柄のパフォーマンスが悪化すれば、投資家は、大きなダメージを被ることになる。</p>
-<p>一応、ファンドマネージャーという業務の名誉のために触れておくとすると、ゴミ箱を作らず、わけへだてなく真摯に良い運用をしていると思われるところもないわけではない。ただ、そういうファンドマネージャーには、なかなかお目にかかることは少なかったと言わざるをえない。<br>いわゆる優秀なファンドマネージャーであればあるほど、抜け目なく冷徹に（ファンドの投資家の利益ではなく）自分の利益を最大化していると思っておくのが妥当な線だと思う。要は、優秀なファンドマネージャーほど簡単には信用できないということだ。</p>
-<p>もっとも、筆者がそういうファンドマネージャーの行動を丹念にチェックしていたのはかなり前の話なので、今では変わっている可能性もなくはないが、まあ、あまり期待できないように思う（念の為に申し添えると、以上の話は、冒頭に書いたように、機関投資家向けのファンドを扱うアメリカのファンドマネージャーについての話であって、日本の個人向けのファンドに関する話ではない）。</p>
-<h2 id="クローク・トレード"><a href="#クローク・トレード" class="headerlink" title="クローク・トレード"></a>クローク・トレード</h2><p>たまたま最近、ファンドマネージャーが投資家向けの報告を行うタイミングで保有銘柄を一時的に動かす取引のことをクローク・トレード（Cloak(ed) Trade）と呼ぶことを知った。例えば、報告のタイミングで、ある銘柄を条件を超えて保有するわけにはいかないので、報告の基準日の直前に売り、基準日の直後に同じ銘柄を買い戻すような取引である。ちょうどクロークに一時預けをしているようなものというわけだ。逆に、基準日の直前に買って、直後に売るという行動もありえるだろう。</p>
-<p>今の筆者には、ファンドマネージャーがどのような取引をしているのか詳細な情報を得る方法はないので、株価の変動状況を頼りに、クローク・トレードが実際に存在するかどうか調べてみることにしたい。</p>
-<h2 id="株価データ"><a href="#株価データ" class="headerlink" title="株価データ"></a>株価データ</h2><p>ここでは、株価のデータとして、ポーランドの証券会社Stooqの提供する日次データを使用する。本記事を書いているタイミングでは、Stooqから日本株3542銘柄、NYSE3,613銘柄、NASDAQ 2,979銘柄のデータが得られた。Stooqのデータは、Yahoo Financeなどのデータと食い違うところもあるが、一度に大量の銘柄の時系列情報が取得できるところが大きなメリットである。今回は大雑把な状況を把握するだけなので、データの細かいチェックや配当調整などは行わない。</p>
-<h2 id="評価方法"><a href="#評価方法" class="headerlink" title="評価方法"></a>評価方法</h2><p>月末と月初の株価の動きには、次の４パターンがある。<br> (1) 月末に株価が上がり、月初にも株価が上がる（↑↑）<br> (2) 月末に株価が上がり、月初に株価が下がる（↑↓）<br> (3) 月末に株価が下がり、月初に株価が上がる（↓↑）<br> (4) 月末に株価が下がり、月初にも株価が下がる（↓↓）<br>ごくごく単純に考えれば、それぞれのパターンが起きる可能性は２５％である。もし、先ほど述べたように、ファンドマネージャーが月末を挟んでクローク・トレードをしているのであれば、(2)あるいは(3)が多く見られるはずである。<br>先ほど冒頭に述べた発想からすると、クローク・トレードは特定の銘柄について行われるものであって、全ての銘柄に同じように行われるものではないはずである。したがって、ここで着目したいのは、他の大多数の銘柄とは違い、(2)または(3)が際立って良く起こる銘柄が存在するかどうかである（市場全体の株価が上げているとか、インデックスの動きを控除するというようなことは対象とする全ての銘柄に共通することなので、特段考慮する必要はない）。</p>
-<h2 id="計算結果"><a href="#計算結果" class="headerlink" title="計算結果"></a>計算結果</h2><p>Stooqのデータの中から、2006年1月から2016年12月までの間に、６０か月以上のデータが取得できる銘柄を対象として、銘柄別に(2)と(3)それぞれに該当する月の数を数え、それぞれがデータとして使用できた月数に対する比率を計算することとした。例えば、ある銘柄について、過去５か月のデータがあり、２回の(2)があり、１回の(3)があったのであれば、それぞれ40%と20%ということになる。</p>
-<p>月末最終営業日の１日前の終値から最終営業日までの変化と、最終営業日の終値から翌月初営業日終値までの１日間の変化を参照し、この計算を日本株の各銘柄について行うと、次のようなヒストグラムになった。</p>
-<table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_up_1_60.png" title="日本株観測期間1日毎月月初株高" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_1_60.png" title="日本株観測期間1日毎月月初株安" width="250"><br></td></tr></table>
-
-<p>左側の青のヒストグラムが月末に株価が上がり、月初に下がる(2)のパターン、右の赤のものがその反対の(3)のパターンである。横軸は0.025刻み、縦軸は銘柄数である。４つパターンがあるので、単純な平均は25%(0.25)で、大雑把に言えば、実際にそのあたりがヒストグラムのピークになっているが、明らかに青のヒストグラムでは左側の分布が大きく、赤のヒストグラムでは右側の裾野が大きい。比較のために、４つのパターンがランダムに発生すると仮定して同じ銘柄データで作成したのが、次の黄色のヒストグラムであるが、分布の裾野が青や赤のケースよりもずっと狭いことが見て取れる（なお、これらの分布はどれも0から1までの範囲を取るので、平均が０に近い時には、左側が膨らみ、右側の裾が長くなる）。</p>
-<table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_random_1_60.png" title="日本株観測期間1日毎月値動きランダム" width="250"><br></td></tr></table>
-
-<p>さて、ここで月末に株価が下がり、翌月初に上がる、赤のヒストグラムについて意味を確認しておきたい。このヒストグラムは、右裾が横軸の値で0.5を超えている。これは、対象期間（60か月以上）の各月において、半分（０．５）以上の月で、月末に株価が下がり、翌月初に上がった銘柄が存在しているということを示している。<br>もちろん、確率的には、この株価のパターンにたまたま該当することはありえるが、それが60回中30回もあるというのは、偶然として説明するにはかなり稀有なことと考えるのが自然だろう。右側の裾野の形も、ランダムな場合の黄色のヒストグラムと比べてぐっと大きくなっているのも、何らかの理由が働いていることを示唆している。<br>また、青のヒストグラムは、月末に株価が上がり、翌月末に下がる比率の分布を示しているわけだが、その右側部分が大きく膨らんでいることは、そのような比率が低い、すなわち、月末に株価が上がって、翌月末に下がるものが少ないことを示している。</p>
-<h2 id="株価変化観測期間による違い"><a href="#株価変化観測期間による違い" class="headerlink" title="株価変化観測期間による違い"></a>株価変化観測期間による違い</h2><p>ファンドマネージャーや機関投資家が売買を行う際、その金額が多額であれば、複数の日に分けて取引を行うことがある。そこで、先程は1日間だけの価格の動く方向を見たが、今度は3日間、5日間での動きを見てみたい。下のヒストグラムは、左から順にに月末を挟んで、パターン(3)について1, 3, 5日間の動きを見たものである（１日のものは再掲）。</p>
-<table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_1_60.png" title="日本株観測期間1日毎月月初値下がり" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_3_60.png" title="日本株観測期間3日毎月月初値下がり" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_5_60.png" title="日本株観測期間5日毎月月初値下がり" width="250"><br></td></tr></table>
-
-<p>これらによれば、観測日数が延びるのにつれて、右側の裾野の高さが下がっている。このことは、ファンドマネージャーや投資家が月末に株式の売却を行う際に、何日も必要とするうような銘柄は限られているということを示唆していると思われる。</p>
-<h2 id="四半期末での状況"><a href="#四半期末での状況" class="headerlink" title="四半期末での状況"></a>四半期末での状況</h2><p>ここまで、60か月以上の期間の毎月末前後の株価の動きを見てきたが、ファンドマネージャーが投資家に報告を行ったり、機関投資家が業績を発表する基準となるのが四半期末であることを考えると、各月末よりも各四半期末の方が、よりはっきりとした特徴があるかもしれない。<br>下の左側のヒストグラムがこれまでと同じ（観測期間1日の毎月末のもの）、右側のヒストグラムが四半期の場合である。予想と異なり、特に目立った違いがあるとまでは言いづらい。しかも、毎四半期の場合には、サンプルデータの数が毎月末の場合の３分の１になるので、偶然の要素が働きやすく、ヒストグラムの裾野が広く見えやすいことを割り引いて考える必要もある。</p>
-<table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_1_60.png" title="日本株観測期間1日毎月月初値下がり" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_Q_down_1_15.0.png" title="日本株観測期間1日四半期月初値下がり" width="250"><br></td></tr></table>
-
-<h2 id="市場別の違い"><a href="#市場別の違い" class="headerlink" title="市場別の違い"></a>市場別の違い</h2><p>ここまでのところで、クローク・トレードの様子を見るには、観測期間1日、毎月末で調べていけば良さそうなことが分かってきたが、米国株ではどうだろうか。以下、日本株の(2)と(3)のパターンに習い、NYSEとNASDAQのケースを並べてみた。</p>
-<h3 id="日本株"><a href="#日本株" class="headerlink" title="日本株"></a>日本株</h3><table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_up_1_60.png" title="日本株観測期間1日毎月月初株高" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_JP_M_down_1_60.png" title="日本株観測期間1日毎月月初株安" width="250"><br></td></tr></table>
-
-<h3 id="NYSE"><a href="#NYSE" class="headerlink" title="NYSE"></a>NYSE</h3><table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_NYSE_M_up_1_60.png" title="NYSE観測期間1日毎月月初株高" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_NYSE_M_down_1_60.png" title="NYSE観測期間1日毎月月初株安" width="250"><br></td></tr></table>
-
-<h3 id="NASDAQ"><a href="#NASDAQ" class="headerlink" title="NASDAQ"></a>NASDAQ</h3><table border="0"><tr><td><br><img src="/2017/01/27/cloak-trade/hist_NASDAQ_M_up_1_60.png" title="NASDAQ観測期間1日毎月月初株高" width="250"><br></td><td><br><img src="/2017/01/27/cloak-trade/hist_NASDAQ_M_down_1_60.png" title="NASDAQ観測期間1日毎月月初株安" width="250"><br></td></tr></table>
-
-<p>これらを見ると、NYSEもNASDAQも、日本株ほど説明しやすい分布にはなっていなさそうだ。<br>NYSEについてはまだしも、NASDAQについては、ランダムな場合よりは裾野が広いとは言え、日本株ほど明確に(3)のパターンがあるとは言いづらい。</p>
-<h2 id="おわりに"><a href="#おわりに" class="headerlink" title="おわりに"></a>おわりに</h2><p>一般的に、月末には株が売られ、月初に株が買われるという傾向があることは良く知られている。ただ、それは、市場全般にわたっての話である。この記事で調べた範囲では、特にそうなりやすい銘柄と、そうでもない銘柄がありそうだということが窺われた。<br>この切り口から、銘柄の特性の違いをうまく運用方法に反映できないか、いくつかアイデアを試してはみたが、残念ながらすぐには見つからなかった。具体的に、どんなファンドマネージャーが、どんな銘柄をどんなタイミングで取引しているのか、生の情報が手元にないと、これ以上踏み込んでいくのは難しいかもしれない。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1410,7 +1339,7 @@ for i in range(200):
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">記事</span>
             </a>
           </div>
@@ -1418,7 +1347,7 @@ for i in range(200):
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">カテゴリー</span>
               
             </div>
@@ -1427,7 +1356,7 @@ for i in range(200):
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">タグ</span>
               
             </div>

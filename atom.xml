@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fanannan.github.io/"/>
-  <updated>2017-02-08T08:51:41.262Z</updated>
+  <updated>2017-02-09T00:04:35.201Z</updated>
   <id>http://fanannan.github.io/</id>
   
   <author>
@@ -14,6 +14,94 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>週末に金が上がる傾向があることの確認</title>
+    <link href="http://fanannan.github.io/2017/02/09/gold-on-fridays/"/>
+    <id>http://fanannan.github.io/2017/02/09/gold-on-fridays/</id>
+    <published>2017-02-08T22:36:14.000Z</published>
+    <updated>2017-02-09T00:04:35.201Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・金価格が金曜日から月曜にかけて上がる傾向は確認できたが、分散が大きくそれだけではなんとも。<br>・木曜日の状況を加味すると、傾向が強まる印象はあるので、条件を検討すれば有用かもしれないが、実用に向くほどではない。</p>
+<hr>
+<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>週末や休日の前に、金融資産の価格がどのように動くかは、その時々の市場の情勢を象徴的に示すことがあるように思える時がある。週末や休日の間、リスク資産を持ちたくないという気持ちが強ければ、金やVIX、国債などに動きがあることも考えられる。</p>
+<p>いろいろな金融資産について、曜日別のアノマリーについて検討した論文( <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912112" target="_blank" rel="external">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912112</a> )<br>において、金が一番強い（確実性が高そうな）曜日別アノマリーがあり、金曜日に値上がりをするという記載があったので、簡単に確かめてみることにした。</p>
+<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>データにはYahoo Financeの日次データを利用した。金価格の動向を反映する資産としては、金のETFであるGLD、金鉱株のETFであるGLDを用いた。</p>
+<h2 id="曜日別動向"><a href="#曜日別動向" class="headerlink" title="曜日別動向"></a>曜日別動向</h2><p>月曜日を１、金曜日を５とした曜日別の変化率は下記のチャートの通りである。論文で有意性が確認されている通り、確かにGLDは金曜日に（木曜日終値から金曜日終値にかけて）一番上げているが、平均は14bpと小さく、標準偏差は124bpと非常にぶれが大きい。また、GDXに関しては月曜日に下げ、水曜日に上げる傾向のほうが、金曜日の動きよりも大きい。</p>
+<table border="0"><tr><br><img src="/2017/02/09/gold-on-fridays/dists.png" title="金ETFおよび金鉱株ETFの曜日別価格変化" width="1200"><br></tr></table>
+
+<p>次に、金曜日の前日である木曜日に、S&amp;P500やVIX、金融株のETFであるXLFがどう動いたかを横軸とし、縦軸に金曜日のGLDとGDXの変化を見ると、木曜日にVIXがあげたら金曜日に金が買われる傾向が若干強いように見える。ただ、ばらつきが大きいことには変わりがないので、これだけでは有用とは言えない。色々な要素を組み合わせると、傾向はもっと強くなるかもしれないが、インドや中国、中東の金需要など季節要因となる重要な要素は多いので、まあ、こんなものというところであろう。</p>
+<table border="0"><tr><br><img src="/2017/02/09/gold-on-fridays/scatters.png" title="木曜日のS&P500、VIX、XLFの動きと金ETFおよび金鉱株ETFの金曜日の価格変化" width="1200"><br></tr></table>
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;この記事に書いてあること&quot;&gt;&lt;a href=&quot;#この記事に書いてあること&quot; class=&quot;headerlink&quot; title=&quot;この記事に書いてあること&quot;&gt;&lt;/a&gt;この記事に書いてあること&lt;/h2&gt;&lt;p&gt;・金価格が金曜日から月曜にかけて上がる傾向は確認で
+    
+    </summary>
+    
+      <category term="コモディティ" scheme="http://fanannan.github.io/categories/%E3%82%B3%E3%83%A2%E3%83%87%E3%82%A3%E3%83%86%E3%82%A3/"/>
+    
+      <category term="金" scheme="http://fanannan.github.io/categories/%E3%82%B3%E3%83%A2%E3%83%87%E3%82%A3%E3%83%86%E3%82%A3/%E9%87%91/"/>
+    
+      <category term="米国株" scheme="http://fanannan.github.io/categories/%E3%82%B3%E3%83%A2%E3%83%87%E3%82%A3%E3%83%86%E3%82%A3/%E9%87%91/%E7%B1%B3%E5%9B%BD%E6%A0%AA/"/>
+    
+      <category term="アノマリー" scheme="http://fanannan.github.io/categories/%E3%82%B3%E3%83%A2%E3%83%87%E3%82%A3%E3%83%86%E3%82%A3/%E9%87%91/%E7%B1%B3%E5%9B%BD%E6%A0%AA/%E3%82%A2%E3%83%8E%E3%83%9E%E3%83%AA%E3%83%BC/"/>
+    
+    
+      <category term="コモディティ" scheme="http://fanannan.github.io/tags/%E3%82%B3%E3%83%A2%E3%83%87%E3%82%A3%E3%83%86%E3%82%A3/"/>
+    
+      <category term="金" scheme="http://fanannan.github.io/tags/%E9%87%91/"/>
+    
+      <category term="米国株" scheme="http://fanannan.github.io/tags/%E7%B1%B3%E5%9B%BD%E6%A0%AA/"/>
+    
+      <category term="アノマリー" scheme="http://fanannan.github.io/tags/%E3%82%A2%E3%83%8E%E3%83%9E%E3%83%AA%E3%83%BC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>米国株の朝の価格動向は夕方の価格動向に影響するか</title>
+    <link href="http://fanannan.github.io/2017/02/09/intraday-pattern/"/>
+    <id>http://fanannan.github.io/2017/02/09/intraday-pattern/</id>
+    <published>2017-02-08T22:35:41.000Z</published>
+    <updated>2017-02-09T01:14:45.097Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・米国株式市場において、朝の時間帯の株価の動きが、夕方の株価の動きと相関を持つという論文が幾つかある。<br>・しかし、運用のシミュレーションをすると上手く行かないという報告があるので、違う見方をしてみたが、やはり駄目そうだ。<br>・とは言え、個別銘柄では難しいにしても、指数で精査すれば何か面白いことがあるかもしれない。</p>
+<hr>
+<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>米国株式市場において、朝オープン直後の時間帯、例えば9:30から10:00までの価格の動きと、夕方の時間帯15:30から16:00までの価格の動きに正の相関が高いということを報告した論文をこれまで幾つか目にしてきた。</p>
+<p>朝の時間帯の取り方にはバリエーションが色々あり、12:00までとしたり、前日の終値からの変化を見たりするものもある。夕方の時間帯については、15:00から15:30までの動きは、朝の時間帯と逆相関、すなわち、15:30から16:00までの時間帯とも逆相関が見られるという見解で概ね一致している。</p>
+<p>今回参照した論文（ <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2905713" target="_blank" rel="external">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2905713</a> ）では、この特性を利用して、運用のシミュレーションを試みているが、うまく行っていない。そこでは、日次で朝の時間帯に値動きの大きい銘柄を選んで、当該銘柄を夕方取引するとどうなるかというやり方がなされている。<br>ここでは、そもそも朝の時間帯と夕方の時間帯で相関の高い銘柄とそうでない銘柄が存在するのではないかと考えて、状況を確認してみたい。</p>
+<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>データにはStooqの５分足データを使用した。対象銘柄は、Stooqに収録されている米国市場の全銘柄（ETFを含む）で、対象期間としては、これまでダウンロードして手元にあるStooqのデータから過去２年分から利用できた範囲（銘柄によりばらつきあり）である。流動性のない銘柄では、５分足の値が存在しないことがあるが、その場合は、当該日のデータそのものが存在しないこととした。</p>
+<h2 id="検討結果"><a href="#検討結果" class="headerlink" title="検討結果"></a>検討結果</h2><p>銘柄別に日次で、9:30から10:00、9:30から12:00、12:00から13:00のそれぞれの時間帯の値動きと15:30から16:00までの値動きの相関を算出し、最も高いものを２つ選び出し時間帯別に左から並べたのが、下記のチャートである。<br>一番相関が高かった上段のEEPでも相関は63%、下段のPAGPで58%で、それも見た通りの程度である。他の銘柄では、ばらつきはもっと大きく、このような多少でも相関が見えるような感じにはならない。銘柄別に見て、特に相関が高いグループがあるようでもないので、銘柄を特定することによってシミュレーションの成績が大きく改善するとは考えにくい。<br>ただし、全体として、朝と夕方の米国株式市場の動きに関係がありそうなのは変わりがないので、指数の動きについては掘り下げて見ると面白いことがあるかもしれない。</p>
+<table border="0"><tr><br><img src="/2017/02/09/intraday-pattern/eep.png" title="EEP" width="1200"><br></tr><tr><br><img src="/2017/02/09/intraday-pattern/pagp.png" title="PAGP" width="1200"><br>
+
+</tr></table>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;この記事に書いてあること&quot;&gt;&lt;a href=&quot;#この記事に書いてあること&quot; class=&quot;headerlink&quot; title=&quot;この記事に書いてあること&quot;&gt;&lt;/a&gt;この記事に書いてあること&lt;/h2&gt;&lt;p&gt;・米国株式市場において、朝の時間帯の株価の動きが、
+    
+    </summary>
+    
+      <category term="米国株" scheme="http://fanannan.github.io/categories/%E7%B1%B3%E5%9B%BD%E6%A0%AA/"/>
+    
+      <category term="アノマリー" scheme="http://fanannan.github.io/categories/%E7%B1%B3%E5%9B%BD%E6%A0%AA/%E3%82%A2%E3%83%8E%E3%83%9E%E3%83%AA%E3%83%BC/"/>
+    
+      <category term="イントラディ" scheme="http://fanannan.github.io/categories/%E7%B1%B3%E5%9B%BD%E6%A0%AA/%E3%82%A2%E3%83%8E%E3%83%9E%E3%83%AA%E3%83%BC/%E3%82%A4%E3%83%B3%E3%83%88%E3%83%A9%E3%83%87%E3%82%A3/"/>
+    
+    
+      <category term="米国株" scheme="http://fanannan.github.io/tags/%E7%B1%B3%E5%9B%BD%E6%A0%AA/"/>
+    
+      <category term="アノマリー" scheme="http://fanannan.github.io/tags/%E3%82%A2%E3%83%8E%E3%83%9E%E3%83%AA%E3%83%BC/"/>
+    
+      <category term="イントラディ" scheme="http://fanannan.github.io/tags/%E3%82%A4%E3%83%B3%E3%83%88%E3%83%A9%E3%83%87%E3%82%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>VIXの上下幅</title>
