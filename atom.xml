@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fanannan.github.io/"/>
-  <updated>2017-02-09T00:04:35.201Z</updated>
+  <updated>2017-02-12T04:08:52.540Z</updated>
   <id>http://fanannan.github.io/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MICとminepyの紹介</title>
+    <link href="http://fanannan.github.io/2017/02/12/minepy/"/>
+    <id>http://fanannan.github.io/2017/02/12/minepy/</id>
+    <published>2017-02-12T03:17:23.000Z</published>
+    <updated>2017-02-12T04:08:52.540Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・２変数の関係を評価するのに、普通の相関評価だけでは見落としてしまいそうな場合にも大変有効なMICという評価方法がある。<br>・ただ、商用利用の場合には別途許可が必要なところに注意が必要。</p>
+<hr>
+<h2 id="通常の相関評価の問題"><a href="#通常の相関評価の問題" class="headerlink" title="通常の相関評価の問題"></a>通常の相関評価の問題</h2><p>機械学習のための特徴量を探すときに、ざっと相関係数を評価して、有望そうな変数を探すというのは良くある話だと思う。しかし、単純に相関係数で評価すると、２変数の散布図で分布を目で見れば明らかに関係がありそうなのに、ちょっと変わった形状の分布になっているために相関係数では捉えられないとか、外れ値の影響で相関が適切に評価できなかったりするような問題がある。</p>
+<h2 id="MINE-MIC"><a href="#MINE-MIC" class="headerlink" title="MINE/MIC"></a>MINE/MIC</h2><p>そんなときに便利なのが、Maximal Information-based Nonparametric Exporation (MINE)というコンセプトで作られた、Maximual Information Coefficient (MIC)である。次の画像で一目瞭然だと思うが、相関係数では絶対値が小さくなって、意味が捉えられない場合でも、MICでは大きな値を返してきてくれる。常にどのような形状でもMICが役に立つわけではないが、普通の相関係数での評価に加えて、MICを用いるのは有効だと思う。</p>
+<table border="0"><tr><br><img src="http://minepy.readthedocs.io/en/latest/_images/relationships.png" title="http://minepy.readthedocs.ioより引用" width="1200"><br></tr></table>
+
+<h2 id="ライブラリ"><a href="#ライブラリ" class="headerlink" title="ライブラリ"></a>ライブラリ</h2><p>MINEはもともとJavaで書かれていたようだが、Pythonで使用する場合には、minepyというラッパーライブラリがあり、pipで入れることができる。ドキュメントは<a href="http://minepy.readthedocs.io/en/latest/install.html" target="_blank" rel="external">こちら</a>である。使い方は、ごく簡単で、numpyの配列を渡して計算できる。なお、渡す配列にNaNが入っていると、0.0を返してくる。アルゴリズム上、計算量は多いが、初期値を変えることで計算時間は結構変わる。</p>
+<pre><code>from minepy import MINE
+mine = MINE(alpha=0.6, c=15, est=&quot;mic_approx&quot;)
+mine.compute_score(x, y)
+mic = mine.mic()
+</code></pre><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>筆者は結構前から、このライブラリを重宝してきたが、世の中ではあまり知られていないようだ。たぶん、原因のひとつは、ライセンスが Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License になっていて、商用利用には個別に許可を得なければならない点だろう。この点にさえ気をつけていれば、結構便利なので、もう少し広まったら良いのではないかと思う。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;この記事に書いてあること&quot;&gt;&lt;a href=&quot;#この記事に書いてあること&quot; class=&quot;headerlink&quot; title=&quot;この記事に書いてあること&quot;&gt;&lt;/a&gt;この記事に書いてあること&lt;/h2&gt;&lt;p&gt;・２変数の関係を評価するのに、普通の相関評価だけで
+    
+    </summary>
+    
+      <category term="機械学習" scheme="http://fanannan.github.io/categories/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/"/>
+    
+      <category term="相関評価" scheme="http://fanannan.github.io/categories/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/%E7%9B%B8%E9%96%A2%E8%A9%95%E4%BE%A1/"/>
+    
+    
+      <category term="機械学習" scheme="http://fanannan.github.io/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/"/>
+    
+      <category term="相関評価" scheme="http://fanannan.github.io/tags/%E7%9B%B8%E9%96%A2%E8%A9%95%E4%BE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>週末に金が上がる傾向があることの確認</title>

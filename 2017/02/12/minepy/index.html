@@ -69,10 +69,12 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="コモディティ,金,米国株,アノマリー," />
+  <meta name="keywords" content="機械学習,相関評価," />
 
 
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="有為転変" type="application/atom+xml" />
@@ -87,25 +89,24 @@
 
 
 
-<meta name="description" content="この記事に書いてあること・金価格が金曜日から月曜にかけて上がる傾向は確認できたが、分散が大きくそれだけではなんとも。・木曜日の状況を加味すると、傾向が強まる印象はあるので、条件を検討すれば有用かもしれないが、実用に向くほどではない。
+<meta name="description" content="この記事に書いてあること・２変数の関係を評価するのに、普通の相関評価だけでは見落としてしまいそうな場合にも大変有効なMICという評価方法がある。・ただ、商用利用の場合には別途許可が必要なところに注意が必要。
 
-契機週末や休日の前に、金融資産の価格がどのように動くかは、その時々の市場の情勢を象徴的に示すことがあるように思える時がある。週末や休日の間、リスク資産を持ちたくな">
+通常の相関評価の問題機械学習のための特徴量を探すときに、ざっと相関係数を評価して、有望そうな変数を探すというのは良くある話だと思う。しかし、単純に相関係数で評価すると、２変数の散布図で分布">
 <meta property="og:type" content="article">
-<meta property="og:title" content="週末に金が上がる傾向があることの確認">
-<meta property="og:url" content="http://fanannan.github.io/2017/02/09/gold-on-fridays/index.html">
+<meta property="og:title" content="MICとminepyの紹介">
+<meta property="og:url" content="http://fanannan.github.io/2017/02/12/minepy/index.html">
 <meta property="og:site_name" content="有為転変">
-<meta property="og:description" content="この記事に書いてあること・金価格が金曜日から月曜にかけて上がる傾向は確認できたが、分散が大きくそれだけではなんとも。・木曜日の状況を加味すると、傾向が強まる印象はあるので、条件を検討すれば有用かもしれないが、実用に向くほどではない。
+<meta property="og:description" content="この記事に書いてあること・２変数の関係を評価するのに、普通の相関評価だけでは見落としてしまいそうな場合にも大変有効なMICという評価方法がある。・ただ、商用利用の場合には別途許可が必要なところに注意が必要。
 
-契機週末や休日の前に、金融資産の価格がどのように動くかは、その時々の市場の情勢を象徴的に示すことがあるように思える時がある。週末や休日の間、リスク資産を持ちたくな">
-<meta property="og:image" content="http://fanannan.github.io/2017/02/09/gold-on-fridays/dists.png">
-<meta property="og:image" content="http://fanannan.github.io/2017/02/09/gold-on-fridays/scatters.png">
-<meta property="og:updated_time" content="2017-02-09T00:04:35.201Z">
+通常の相関評価の問題機械学習のための特徴量を探すときに、ざっと相関係数を評価して、有望そうな変数を探すというのは良くある話だと思う。しかし、単純に相関係数で評価すると、２変数の散布図で分布">
+<meta property="og:image" content="http://minepy.readthedocs.io/en/latest/_images/relationships.png">
+<meta property="og:updated_time" content="2017-02-12T04:08:52.540Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="週末に金が上がる傾向があることの確認">
-<meta name="twitter:description" content="この記事に書いてあること・金価格が金曜日から月曜にかけて上がる傾向は確認できたが、分散が大きくそれだけではなんとも。・木曜日の状況を加味すると、傾向が強まる印象はあるので、条件を検討すれば有用かもしれないが、実用に向くほどではない。
+<meta name="twitter:title" content="MICとminepyの紹介">
+<meta name="twitter:description" content="この記事に書いてあること・２変数の関係を評価するのに、普通の相関評価だけでは見落としてしまいそうな場合にも大変有効なMICという評価方法がある。・ただ、商用利用の場合には別途許可が必要なところに注意が必要。
 
-契機週末や休日の前に、金融資産の価格がどのように動くかは、その時々の市場の情勢を象徴的に示すことがあるように思える時がある。週末や休日の間、リスク資産を持ちたくな">
-<meta name="twitter:image" content="http://fanannan.github.io/2017/02/09/gold-on-fridays/dists.png">
+通常の相関評価の問題機械学習のための特徴量を探すときに、ざっと相関係数を評価して、有望そうな変数を探すというのは良くある話だと思う。しかし、単純に相関係数で評価すると、２変数の散布図で分布">
+<meta name="twitter:image" content="http://minepy.readthedocs.io/en/latest/_images/relationships.png">
 
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://fanannan.github.io/2017/02/09/gold-on-fridays/"/>
+  <link rel="canonical" href="http://fanannan.github.io/2017/02/12/minepy/"/>
 
 
 
 
 
-  <title> 週末に金が上がる傾向があることの確認 | 有為転変 </title>
+  <title> MICとminepyの紹介 | 有為転変 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="ja">
@@ -270,7 +271,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/09/gold-on-fridays/">
+  <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/12/minepy/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="fanannan">
@@ -294,7 +295,7 @@
             
             
               
-                週末に金が上がる傾向があることの確認
+                MICとminepyの紹介
               
             
           </h1>
@@ -307,8 +308,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">投稿日</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T07:36:14+09:00">
-                2017-02-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-12T12:17:23+09:00">
+                2017-02-12
               </time>
             
 
@@ -326,8 +327,8 @@
               <span class="post-meta-item-text">post.in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/コモディティ/" itemprop="url" rel="index">
-                    <span itemprop="name">コモディティ</span>
+                  <a href="/categories/機械学習/" itemprop="url" rel="index">
+                    <span itemprop="name">機械学習</span>
                   </a>
                 </span>
 
@@ -337,30 +338,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/コモディティ/金/" itemprop="url" rel="index">
-                    <span itemprop="name">金</span>
-                  </a>
-                </span>
-
-                
-                
-                  、
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/コモディティ/金/米国株/" itemprop="url" rel="index">
-                    <span itemprop="name">米国株</span>
-                  </a>
-                </span>
-
-                
-                
-                  、
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/コモディティ/金/米国株/アノマリー/" itemprop="url" rel="index">
-                    <span itemprop="name">アノマリー</span>
+                  <a href="/categories/機械学習/相関評価/" itemprop="url" rel="index">
+                    <span itemprop="name">相関評価</span>
                   </a>
                 </span>
 
@@ -374,8 +353,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/02/09/gold-on-fridays/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://fanannan.github.io/2017/02/09/gold-on-fridays/" itemprop="commentCount">0</span> comments
+                <a href="/2017/02/12/minepy/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://fanannan.github.io/2017/02/12/minepy/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -402,17 +381,18 @@
 
       
         <hr>
-<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・金価格が金曜日から月曜にかけて上がる傾向は確認できたが、分散が大きくそれだけではなんとも。<br>・木曜日の状況を加味すると、傾向が強まる印象はあるので、条件を検討すれば有用かもしれないが、実用に向くほどではない。</p>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・２変数の関係を評価するのに、普通の相関評価だけでは見落としてしまいそうな場合にも大変有効なMICという評価方法がある。<br>・ただ、商用利用の場合には別途許可が必要なところに注意が必要。</p>
 <hr>
-<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>週末や休日の前に、金融資産の価格がどのように動くかは、その時々の市場の情勢を象徴的に示すことがあるように思える時がある。週末や休日の間、リスク資産を持ちたくないという気持ちが強ければ、金やVIX、国債などに動きがあることも考えられる。</p>
-<p>いろいろな金融資産について、曜日別のアノマリーについて検討した論文( <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912112" target="_blank" rel="external">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912112</a> )<br>において、金が一番強い（確実性が高そうな）曜日別アノマリーがあり、金曜日に値上がりをするという記載があったので、簡単に確かめてみることにした。</p>
-<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>データにはYahoo Financeの日次データを利用した。金価格の動向を反映する資産としては、金のETFであるGLD、金鉱株のETFであるGLDを用いた。</p>
-<h2 id="曜日別動向"><a href="#曜日別動向" class="headerlink" title="曜日別動向"></a>曜日別動向</h2><p>月曜日を１、金曜日を５とした曜日別の変化率は下記のチャートの通りである。論文で有意性が確認されている通り、確かにGLDは金曜日に（木曜日終値から金曜日終値にかけて）一番上げているが、平均は14bpと小さく、標準偏差は124bpと非常にぶれが大きい。また、GDXに関しては月曜日に下げ、水曜日に上げる傾向のほうが、金曜日の動きよりも大きい。</p>
-<table border="0"><tr><br><img src="/2017/02/09/gold-on-fridays/dists.png" title="金ETFおよび金鉱株ETFの曜日別価格変化" width="1200"><br></tr></table>
+<h2 id="通常の相関評価の問題"><a href="#通常の相関評価の問題" class="headerlink" title="通常の相関評価の問題"></a>通常の相関評価の問題</h2><p>機械学習のための特徴量を探すときに、ざっと相関係数を評価して、有望そうな変数を探すというのは良くある話だと思う。しかし、単純に相関係数で評価すると、２変数の散布図で分布を目で見れば明らかに関係がありそうなのに、ちょっと変わった形状の分布になっているために相関係数では捉えられないとか、外れ値の影響で相関が適切に評価できなかったりするような問題がある。</p>
+<h2 id="MINE-MIC"><a href="#MINE-MIC" class="headerlink" title="MINE/MIC"></a>MINE/MIC</h2><p>そんなときに便利なのが、Maximal Information-based Nonparametric Exporation (MINE)というコンセプトで作られた、Maximual Information Coefficient (MIC)である。次の画像で一目瞭然だと思うが、相関係数では絶対値が小さくなって、意味が捉えられない場合でも、MICでは大きな値を返してきてくれる。常にどのような形状でもMICが役に立つわけではないが、普通の相関係数での評価に加えて、MICを用いるのは有効だと思う。</p>
+<table border="0"><tr><br><img src="http://minepy.readthedocs.io/en/latest/_images/relationships.png" title="http://minepy.readthedocs.ioより引用" width="1200"><br></tr></table>
 
-<p>次に、金曜日の前日である木曜日に、S&amp;P500やVIX、金融株のETFであるXLFがどう動いたかを横軸とし、縦軸に金曜日のGLDとGDXの変化を見ると、木曜日にVIXがあげたら金曜日に金が買われる傾向が若干強いように見える。ただ、ばらつきが大きいことには変わりがないので、これだけでは有用とは言えない。色々な要素を組み合わせると、傾向はもっと強くなるかもしれないが、インドや中国、中東の金需要など季節要因となる重要な要素は多いので、まあ、こんなものというところであろう。</p>
-<table border="0"><tr><br><img src="/2017/02/09/gold-on-fridays/scatters.png" title="木曜日のS&P500、VIX、XLFの動きと金ETFおよび金鉱株ETFの金曜日の価格変化" width="1200"><br></tr></table>
-
+<h2 id="ライブラリ"><a href="#ライブラリ" class="headerlink" title="ライブラリ"></a>ライブラリ</h2><p>MINEはもともとJavaで書かれていたようだが、Pythonで使用する場合には、minepyというラッパーライブラリがあり、pipで入れることができる。ドキュメントは<a href="http://minepy.readthedocs.io/en/latest/install.html" target="_blank" rel="external">こちら</a>である。使い方は、ごく簡単で、numpyの配列を渡して計算できる。なお、渡す配列にNaNが入っていると、0.0を返してくる。アルゴリズム上、計算量は多いが、初期値を変えることで計算時間は結構変わる。</p>
+<pre><code>from minepy import MINE
+mine = MINE(alpha=0.6, c=15, est=&quot;mic_approx&quot;)
+mine.compute_score(x, y)
+mic = mine.mic()
+</code></pre><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>筆者は結構前から、このライブラリを重宝してきたが、世の中ではあまり知られていないようだ。たぶん、原因のひとつは、ライセンスが Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License になっていて、商用利用には個別に許可を得なければならない点だろう。この点にさえ気をつけていれば、結構便利なので、もう少し広まったら良いのではないかと思う。</p>
 
       
     </div>
@@ -436,13 +416,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/コモディティ/" rel="tag"># コモディティ</a>
+            <a href="/tags/機械学習/" rel="tag"># 機械学習</a>
           
-            <a href="/tags/金/" rel="tag"># 金</a>
-          
-            <a href="/tags/米国株/" rel="tag"># 米国株</a>
-          
-            <a href="/tags/アノマリー/" rel="tag"># アノマリー</a>
+            <a href="/tags/相関評価/" rel="tag"># 相関評価</a>
           
         </div>
       
@@ -451,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/09/intraday-pattern/" rel="next" title="米国株の朝の価格動向は夕方の価格動向に影響するか">
-                <i class="fa fa-chevron-left"></i> 米国株の朝の価格動向は夕方の価格動向に影響するか
+              <a href="/2017/02/09/gold-on-fridays/" rel="next" title="週末に金が上がる傾向があることの確認">
+                <i class="fa fa-chevron-left"></i> 週末に金が上がる傾向があることの確認
               </a>
             
           </div>
@@ -460,10 +436,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/12/minepy/" rel="prev" title="MICとminepyの紹介">
-                MICとminepyの紹介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -490,7 +462,7 @@
   <div class="comments" id="comments">
     
       <div class="fb-comments"
-           data-href="http://fanannan.github.io/2017/02/09/gold-on-fridays/"
+           data-href="http://fanannan.github.io/2017/02/12/minepy/"
            data-numposts="10"
            data-width="100%"
            data-colorscheme="light">
@@ -617,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#この記事に書いてあること"><span class="nav-number">1.</span> <span class="nav-text">この記事に書いてあること</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#契機"><span class="nav-number">2.</span> <span class="nav-text">契機</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#データ"><span class="nav-number">3.</span> <span class="nav-text">データ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#曜日別動向"><span class="nav-number">4.</span> <span class="nav-text">曜日別動向</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#この記事に書いてあること"><span class="nav-number">1.</span> <span class="nav-text">この記事に書いてあること</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通常の相関評価の問題"><span class="nav-number">2.</span> <span class="nav-text">通常の相関評価の問題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MINE-MIC"><span class="nav-number">3.</span> <span class="nav-text">MINE/MIC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ライブラリ"><span class="nav-number">4.</span> <span class="nav-text">ライブラリ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意点"><span class="nav-number">5.</span> <span class="nav-text">注意点</span></a></li></ol></div>
             
 
           </div>

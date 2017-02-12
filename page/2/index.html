@@ -262,6 +262,182 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/02/vix-autocorr/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="fanannan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="有為転変">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="有為転変" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/02/vix-autocorr/" itemprop="url">
+                  VIXの回帰性のチェック
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">投稿日</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-02T17:20:48+09:00">
+                2017-02-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">post.in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VIX/" itemprop="url" rel="index">
+                    <span itemprop="name">VIX</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/02/vix-autocorr/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://fanannan.github.io/2017/02/02/vix-autocorr/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・VIXの回帰性を確認するために、ハースト指数、リアプノフ指数、偏自己相関などを評価したが、ぱっとしなかった。<br>・とりわけ、ハースト指数、リアプノフ指数の評価には、かなりのデータ数が必要なので、日次のデータでは無理がある。<br>・偏自己相関は使えそうに見えなくもないが、まあ、気のせいと言うほうが良い。</p>
+<hr>
+<h2 id="VIX指数の推移"><a href="#VIX指数の推移" class="headerlink" title="VIX指数の推移"></a>VIX指数の推移</h2><p>VIX指数の過去の推移を見ると、たまに大きな経済に大きな影響を及ぼすようなことが起きて、VIX指数の値が跳ね上がり、その後、だんだん落ち着くというお馴染みのパターンがある。</p>
+<p>VIX指数はS&amp;P５００指数のオプションから計算されるものであり、VIX指数そのものが市場で直接売り買いされるわけでもないが、VIX指数のこの跳ね上がり方のパターンに何か癖を見つけられないものか、少し調べてみたい。</p>
+<table border="0"><tr><br><img src="/2017/02/02/vix-autocorr/vix_history.png" title="VIX指数とその日次変化率の推移" width="1200"><br></tr></table>
+
+<h2 id="ハースト指数"><a href="#ハースト指数" class="headerlink" title="ハースト指数"></a>ハースト指数</h2><p>まず、はじめに、VIX指数の日次の終値を用いてハースト指数を計算してみる。ハースト指数は、その値が0.5のときにはランダムな動きであることを示し、0.5より大きければ一定の方向性が持続していること、逆に0.5より小さければ反転しやすいことを示す。株価のハースト指数による分析を行った論文では、主な銘柄でハースト指数が0.5より少し大きく、また、ハースト指数が大きい場合にモメンタム戦略が有効であるというようなものを見かける。</p>
+<p>pythonのnoldsというライブラリを用いて、ハースト指数の計算期間を色々と変えて、VIX指数のチャートと重ねてみた。下の各チャートの薄い赤線が、ハースト指数で、左目盛がその値である。まず計算して明らかなのは、計算期間が短いと、ちゃんとしたハースト指数の推定ができないということである。左上の観測期間48日のものは推定値が低すぎるように思われるし、それより期間の長い右上の64日のものでもハースト指数が本来0から1の間の値を取るものなのにもかかわらず、適切な計算ができず、下の観測期間128日や256日の計算で、ようやくそれらしい感じとなっている。これは使用したライブラリ固有の問題というよりは、計算アルゴリズムの性質からやむを得ないものと思われる。</p>
+<table border="0"><tr><br><img src="/2017/02/02/vix-autocorr/daily_hurst.png" title="日次計算したハースト指数の推移" width="1200"><br></tr></table>
+
+<p>では、ここで、データ数を増やすために、正確な方法ではないことを承知で、VIX指数の日次の終値に加えて、始値も合わせて用いてみよう。そうすると、48日や64日のチャートがそれらしいものになるが、128日や256日のチャートの形にも違いが現れる。始値のデータを加えたために形が変わったのか、データが増えたために形が変わったのかはわからない。</p>
+<p>VIX指数の年に数回は跳ね上がるので、ハースト指数の観測期間は短いほうが妥当性がわかりやすいし、また利用価値が高いものと考えられる。そこで、仮に始値と終値の双方を使って計算しても本質的には指し示す意味が同様だと仮定して、どの程度まで短い期間で計算可能か試すこととする。</p>
+<p>その結果、始値と終値の両方を用いての日次計算をしてみると、20日では計算不能、25日は数値が異常に小さく、30日はまだ１を超えるケースが散見されるため信頼感に乏しく、35日でようやくそれらしくなるということが分かった。</p>
+<table border="0"><tr><br><img src="/2017/02/02/vix-autocorr/daily_oc_hurst.png" title="始値と終値で計算したハースト指数の推移" width="1200"><br></tr></table>
+
+<p>最後に、始値と終値に加えて、高値と安値も加えて日次データを作って、ハースト指数の計算をすることにした。始値と終値は時系列的には適切に並べられるが、高値と安値はそうではない。しかし、ここでは、始値、高値、安値、終値の順番に価格変化が起こるものと乱暴に仮定する。<br>その結果の印象は、良とは到底言えないが、それほどには悪くない。数値の高いところはVIX指数がトレンドっぽく、低いところは反転したりレンジにあったりする傾向があるような感じに見えなくもない。何かの指標に使うには心もとないが、じっくり動きを見て見るくらいの価値はあるかもしれない。</p>
+<table border="0"><tr><br><img src="/2017/02/02/vix-autocorr/shorter_daily_ohlc_hurst.png" title="始値と高値、安値、終値で計算したハースト指数の推移" width="1200"><br></tr></table>
+
+<p>なお、VIX指数のハースト指数とVIX指数の翌日の変化率の関係を表したのが下記のチャートである。左は横軸に上記の観測期間20日（始値、高値、安値、終値を使用）のハースト指数、縦軸にその翌日までのVIX指数の変化率をプロットしたものである。右のチャートは横軸を当日のハースト指数からその過去５日平均との差にしたものである。<br>ハースト指数が高い時、あるいは、高くなる時のほうが、いくらかVIX指数の変化の幅は大きく、どちらかと言えば上昇しやすい傾向があるように見受けられる。何か大きなイベントが起きて、VIX指数が上昇トレンドに入った時に、勢いづいてVIX指数が上がる時の状況を主に示しているように思われる。</p>
+<table border="0"><tr><br><img src="/2017/02/02/vix-autocorr/hurst_sensitivities.png" title="ハースト指数とVIX指数の動きの相関" width="1200"><br></tr></table>
+
+<h2 id="最大リアプノフ指数"><a href="#最大リアプノフ指数" class="headerlink" title="最大リアプノフ指数"></a>最大リアプノフ指数</h2><p>今度は、ハースト指数と同様に、最大リアプノフ指数を求めてみる。最大リアプノフ指数が正の値を取るときには、原系列にカオス性があることを意味する。<br>その計算結果が、下のとおりである。期間が短いものでは、ハースト指数同様、計算中にエラーが多発した。また、残念ながら、一見する限り、このまま何か活用できるような印象を受けなかった。</p>
+<table border="0"><tr><br><img src="/2017/02/02/vix-autocorr/lyapnov.png" title="リアプノフ指数の推移" width="1200"><br></tr></table>
+
+<p>左は観測期間48日のリアプノフ指数を横軸とし、翌日のVIX指数の変化率を縦軸にしたもの、右は256日のリアプノフ指数の5日平均からの乖離を横軸にしたものである。特筆するような特徴はなさそうである。</p>
+<table border="0"><tr><br><img src="/2017/02/02/vix-autocorr/lyapnov_sensitivity.png" title="リアプノフ指数とVIX指数の動きの相関" width="1200"><br></tr></table>
+
+<h2 id="自己相関"><a href="#自己相関" class="headerlink" title="自己相関"></a>自己相関</h2><p>次に、VIX指数のデータ系列全体に対して自己相関と偏自己相関を計算したものが下記のチャートである。偏自己相関を見ると、１次のラグ（当日と前日の関係）までしか大きな関係はなく、過去の影響が急速に減少していることが分かる。<br>これまでと同じように、観測期間を変えて、偏自己相関の１次のラグの時系列の変化を追うと以下のようになる。ハースト指数やリアプノフ指数とは違い、観測期間が少なくても計算できるので、最短の観測期間を営業日８日とした。</p>
+<table border="0"><tr><br><img src="/2017/02/02/vix-autocorr/autocorrelation.png" title="自己相関と偏自己相関" width="1200"><br></tr></table>
+
+<p>偏自己相関の値が小さくなったところで、VIX指数が反転する傾向があるように見える。観測期間が８日のものでは、偏自己相関が-0.2より小さくなってくると反転が近い印象があるが、観測期間が長くなればなるほど、VIX指数が判定する偏自己相関のレベルが分かりにくくなる。そこで、観測期間をさらに短くして比べてみることにする。</p>
+<table border="0"><tr><br><img src="/2017/02/02/vix-autocorr/shortterm_autocorrelation.png" title="偏自己相関の推移" width="1200"><br></tr></table>
+
+<p>偏自己相関がVIX指数の反転を示すシグナルとして使えそうに見えなくもないので、色々試してみると、偏自己相関が低く、かつ、VIX指数のYang-Zhangボラティリティが低い時に意味の有りそうな傾向が見つかった。しかし、該当する事象が少ないのと、偏自己相関を持ちださなくても同様の傾向が見られそうであることから、それ以上の検討は打ち切りとした。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/01/yangzhang/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -732,7 +908,7 @@ for i in range(200):
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">記事</span>
             </a>
           </div>
@@ -740,7 +916,7 @@ for i in range(200):
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">カテゴリー</span>
               
             </div>
@@ -749,7 +925,7 @@ for i in range(200):
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">タグ</span>
               
             </div>
