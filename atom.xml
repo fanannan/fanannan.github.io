@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fanannan.github.io/"/>
-  <updated>2017-02-12T04:08:52.540Z</updated>
+  <updated>2017-02-12T08:00:29.650Z</updated>
   <id>http://fanannan.github.io/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VIX指数に先行する指標探し</title>
+    <link href="http://fanannan.github.io/2017/02/12/vix-sensitivities/"/>
+    <id>http://fanannan.github.io/2017/02/12/vix-sensitivities/</id>
+    <published>2017-02-12T04:11:10.000Z</published>
+    <updated>2017-02-12T08:00:29.650Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・VIXの短期の動きに対して先行性のある動きを力任せで探せるようにした。</p>
+<hr>
+<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>世の中の諸々の指標や株価などの動きのなかで、VIX指数の短期の動きの前触れになるようなものはないか調べてみたい。</p>
+<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>ここでは、Yahoo FinanceとCBOEのサイトから取得できる各種の指数、ETF等を題材とする。<br>具体的には、S&amp;P500指数、ETFでVXX’、XIV’、XLF、TLT、GLD、EFA、EEM、JNK、SH、ドルインデックスのDX-Y.NYBをYahoo Financeから、ボラティリティ指数のVVIX、VXTH、VXST、OVX、GVZ、SRVX、CHINA ETF VI、VXGS、VXV、TYVIX、VXEEM、さらに、トータルエクスチェンジ、インデックス、エクイティ、ETP、VIXのオプション取引量およびPut/CallレシオをCBOEのサイトから取得した。</p>
+<p>取得したデータの加工方法としては、各銘柄について、価格変化率、ボラティリティ、取引額の変化など最大で過去30営業日を参照し、5営業日先までのVIX指数の価格変化を見ることとした。VIX指数の価格変化は終値ベースのものだけでなく、始値ベース、同期間の高値のうち最も高いもの、同期間の安値のうち最も安いものをベースにしたものも算出した。詳しい計算方法についてはソースコードを参照してほしい。</p>
+<h2 id="実行例"><a href="#実行例" class="headerlink" title="実行例"></a>実行例</h2><p>銘柄別に計算した例を次に掲げる。縦方向にVIX指数のベースとした価格別、横方向に価格推移と評価方法別散布図を載せた。散布図は横軸が銘柄の状況、縦軸が向こう5営業日のVIX指数の変化率、表題の２行め左側が通常の相関係数、右側がMICである。銘柄の種類により、散布図の描画されないものもある（指数に対する出来高指標等）。</p>
+<table border="0"><tr><td><br><img src="/2017/02/12/vix-sensitivities/vix_vxst.png" title="VXSTの状況（横軸）とVIXの向こう5営業日の動き（縦軸）との関係" width="1200"><br></td></tr></table>
+
+<h2 id="コード"><a href="#コード" class="headerlink" title="コード"></a>コード</h2><p>ソースコードは<a href="https://gist.github.com/fanannan/1ec0f38f4f92a0726fc27ee4d8cf03ca" target="_blank" rel="external">こちら</a>に記載した。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;この記事に書いてあること&quot;&gt;&lt;a href=&quot;#この記事に書いてあること&quot; class=&quot;headerlink&quot; title=&quot;この記事に書いてあること&quot;&gt;&lt;/a&gt;この記事に書いてあること&lt;/h2&gt;&lt;p&gt;・VIXの短期の動きに対して先行性のある動きを力任
+    
+    </summary>
+    
+      <category term="VIX" scheme="http://fanannan.github.io/categories/VIX/"/>
+    
+    
+      <category term="VIX" scheme="http://fanannan.github.io/tags/VIX/"/>
+    
+  </entry>
   
   <entry>
     <title>MICとminepyの紹介</title>

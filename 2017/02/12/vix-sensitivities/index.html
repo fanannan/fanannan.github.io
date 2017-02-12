@@ -69,10 +69,12 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="コモディティ,金,米国株,アノマリー," />
+  <meta name="keywords" content="VIX," />
 
 
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="有為転変" type="application/atom+xml" />
@@ -87,25 +89,27 @@
 
 
 
-<meta name="description" content="この記事に書いてあること・金価格が金曜日から月曜にかけて上がる傾向は確認できたが、分散が大きくそれだけではなんとも。・木曜日の状況を加味すると、傾向が強まる印象はあるので、条件を検討すれば有用かもしれないが、実用に向くほどではない。
+<meta name="description" content="この記事に書いてあること・VIXの短期の動きに対して先行性のある動きを力任せで探せるようにした。
 
-契機週末や休日の前に、金融資産の価格がどのように動くかは、その時々の市場の情勢を象徴的に示すことがあるように思える時がある。週末や休日の間、リスク資産を持ちたくな">
+契機世の中の諸々の指標や株価などの動きのなかで、VIX指数の短期の動きの前触れになるようなものはないか調べてみたい。
+データここでは、Yahoo FinanceとCBOEのサイトから取得できる各種の指数、ETF等を題材とする。具体的には、S&amp;amp;P500指数、ETFでVXX’、XIV’、XLF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="週末に金が上がる傾向があることの確認">
-<meta property="og:url" content="http://fanannan.github.io/2017/02/09/gold-on-fridays/index.html">
+<meta property="og:title" content="VIX指数に先行する指標探し">
+<meta property="og:url" content="http://fanannan.github.io/2017/02/12/vix-sensitivities/index.html">
 <meta property="og:site_name" content="有為転変">
-<meta property="og:description" content="この記事に書いてあること・金価格が金曜日から月曜にかけて上がる傾向は確認できたが、分散が大きくそれだけではなんとも。・木曜日の状況を加味すると、傾向が強まる印象はあるので、条件を検討すれば有用かもしれないが、実用に向くほどではない。
+<meta property="og:description" content="この記事に書いてあること・VIXの短期の動きに対して先行性のある動きを力任せで探せるようにした。
 
-契機週末や休日の前に、金融資産の価格がどのように動くかは、その時々の市場の情勢を象徴的に示すことがあるように思える時がある。週末や休日の間、リスク資産を持ちたくな">
-<meta property="og:image" content="http://fanannan.github.io/2017/02/09/gold-on-fridays/dists.png">
-<meta property="og:image" content="http://fanannan.github.io/2017/02/09/gold-on-fridays/scatters.png">
-<meta property="og:updated_time" content="2017-02-09T00:04:35.201Z">
+契機世の中の諸々の指標や株価などの動きのなかで、VIX指数の短期の動きの前触れになるようなものはないか調べてみたい。
+データここでは、Yahoo FinanceとCBOEのサイトから取得できる各種の指数、ETF等を題材とする。具体的には、S&amp;amp;P500指数、ETFでVXX’、XIV’、XLF">
+<meta property="og:image" content="http://fanannan.github.io/2017/02/12/vix-sensitivities/vix_vxst.png">
+<meta property="og:updated_time" content="2017-02-12T08:00:29.650Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="週末に金が上がる傾向があることの確認">
-<meta name="twitter:description" content="この記事に書いてあること・金価格が金曜日から月曜にかけて上がる傾向は確認できたが、分散が大きくそれだけではなんとも。・木曜日の状況を加味すると、傾向が強まる印象はあるので、条件を検討すれば有用かもしれないが、実用に向くほどではない。
+<meta name="twitter:title" content="VIX指数に先行する指標探し">
+<meta name="twitter:description" content="この記事に書いてあること・VIXの短期の動きに対して先行性のある動きを力任せで探せるようにした。
 
-契機週末や休日の前に、金融資産の価格がどのように動くかは、その時々の市場の情勢を象徴的に示すことがあるように思える時がある。週末や休日の間、リスク資産を持ちたくな">
-<meta name="twitter:image" content="http://fanannan.github.io/2017/02/09/gold-on-fridays/dists.png">
+契機世の中の諸々の指標や株価などの動きのなかで、VIX指数の短期の動きの前触れになるようなものはないか調べてみたい。
+データここでは、Yahoo FinanceとCBOEのサイトから取得できる各種の指数、ETF等を題材とする。具体的には、S&amp;amp;P500指数、ETFでVXX’、XIV’、XLF">
+<meta name="twitter:image" content="http://fanannan.github.io/2017/02/12/vix-sensitivities/vix_vxst.png">
 
 
 
@@ -133,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://fanannan.github.io/2017/02/09/gold-on-fridays/"/>
+  <link rel="canonical" href="http://fanannan.github.io/2017/02/12/vix-sensitivities/"/>
 
 
 
 
 
-  <title> 週末に金が上がる傾向があることの確認 | 有為転変 </title>
+  <title> VIX指数に先行する指標探し | 有為転変 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="ja">
@@ -270,7 +274,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/09/gold-on-fridays/">
+  <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/12/vix-sensitivities/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="fanannan">
@@ -294,7 +298,7 @@
             
             
               
-                週末に金が上がる傾向があることの確認
+                VIX指数に先行する指標探し
               
             
           </h1>
@@ -307,8 +311,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">投稿日</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T07:36:14+09:00">
-                2017-02-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-12T13:11:10+09:00">
+                2017-02-12
               </time>
             
 
@@ -326,41 +330,8 @@
               <span class="post-meta-item-text">post.in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/コモディティ/" itemprop="url" rel="index">
-                    <span itemprop="name">コモディティ</span>
-                  </a>
-                </span>
-
-                
-                
-                  、
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/コモディティ/金/" itemprop="url" rel="index">
-                    <span itemprop="name">金</span>
-                  </a>
-                </span>
-
-                
-                
-                  、
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/コモディティ/金/米国株/" itemprop="url" rel="index">
-                    <span itemprop="name">米国株</span>
-                  </a>
-                </span>
-
-                
-                
-                  、
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/コモディティ/金/米国株/アノマリー/" itemprop="url" rel="index">
-                    <span itemprop="name">アノマリー</span>
+                  <a href="/categories/VIX/" itemprop="url" rel="index">
+                    <span itemprop="name">VIX</span>
                   </a>
                 </span>
 
@@ -374,8 +345,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/02/09/gold-on-fridays/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://fanannan.github.io/2017/02/09/gold-on-fridays/" itemprop="commentCount">0</span> comments
+                <a href="/2017/02/12/vix-sensitivities/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://fanannan.github.io/2017/02/12/vix-sensitivities/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -402,17 +373,15 @@
 
       
         <hr>
-<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・金価格が金曜日から月曜にかけて上がる傾向は確認できたが、分散が大きくそれだけではなんとも。<br>・木曜日の状況を加味すると、傾向が強まる印象はあるので、条件を検討すれば有用かもしれないが、実用に向くほどではない。</p>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・VIXの短期の動きに対して先行性のある動きを力任せで探せるようにした。</p>
 <hr>
-<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>週末や休日の前に、金融資産の価格がどのように動くかは、その時々の市場の情勢を象徴的に示すことがあるように思える時がある。週末や休日の間、リスク資産を持ちたくないという気持ちが強ければ、金やVIX、国債などに動きがあることも考えられる。</p>
-<p>いろいろな金融資産について、曜日別のアノマリーについて検討した論文( <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912112" target="_blank" rel="external">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2912112</a> )<br>において、金が一番強い（確実性が高そうな）曜日別アノマリーがあり、金曜日に値上がりをするという記載があったので、簡単に確かめてみることにした。</p>
-<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>データにはYahoo Financeの日次データを利用した。金価格の動向を反映する資産としては、金のETFであるGLD、金鉱株のETFであるGLDを用いた。</p>
-<h2 id="曜日別動向"><a href="#曜日別動向" class="headerlink" title="曜日別動向"></a>曜日別動向</h2><p>月曜日を１、金曜日を５とした曜日別の変化率は下記のチャートの通りである。論文で有意性が確認されている通り、確かにGLDは金曜日に（木曜日終値から金曜日終値にかけて）一番上げているが、平均は14bpと小さく、標準偏差は124bpと非常にぶれが大きい。また、GDXに関しては月曜日に下げ、水曜日に上げる傾向のほうが、金曜日の動きよりも大きい。</p>
-<table border="0"><tr><br><img src="/2017/02/09/gold-on-fridays/dists.png" title="金ETFおよび金鉱株ETFの曜日別価格変化" width="1200"><br></tr></table>
+<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>世の中の諸々の指標や株価などの動きのなかで、VIX指数の短期の動きの前触れになるようなものはないか調べてみたい。</p>
+<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>ここでは、Yahoo FinanceとCBOEのサイトから取得できる各種の指数、ETF等を題材とする。<br>具体的には、S&amp;P500指数、ETFでVXX’、XIV’、XLF、TLT、GLD、EFA、EEM、JNK、SH、ドルインデックスのDX-Y.NYBをYahoo Financeから、ボラティリティ指数のVVIX、VXTH、VXST、OVX、GVZ、SRVX、CHINA ETF VI、VXGS、VXV、TYVIX、VXEEM、さらに、トータルエクスチェンジ、インデックス、エクイティ、ETP、VIXのオプション取引量およびPut/CallレシオをCBOEのサイトから取得した。</p>
+<p>取得したデータの加工方法としては、各銘柄について、価格変化率、ボラティリティ、取引額の変化など最大で過去30営業日を参照し、5営業日先までのVIX指数の価格変化を見ることとした。VIX指数の価格変化は終値ベースのものだけでなく、始値ベース、同期間の高値のうち最も高いもの、同期間の安値のうち最も安いものをベースにしたものも算出した。詳しい計算方法についてはソースコードを参照してほしい。</p>
+<h2 id="実行例"><a href="#実行例" class="headerlink" title="実行例"></a>実行例</h2><p>銘柄別に計算した例を次に掲げる。縦方向にVIX指数のベースとした価格別、横方向に価格推移と評価方法別散布図を載せた。散布図は横軸が銘柄の状況、縦軸が向こう5営業日のVIX指数の変化率、表題の２行め左側が通常の相関係数、右側がMICである。銘柄の種類により、散布図の描画されないものもある（指数に対する出来高指標等）。</p>
+<table border="0"><tr><td><br><img src="/2017/02/12/vix-sensitivities/vix_vxst.png" title="VXSTの状況（横軸）とVIXの向こう5営業日の動き（縦軸）との関係" width="1200"><br></td></tr></table>
 
-<p>次に、金曜日の前日である木曜日に、S&amp;P500やVIX、金融株のETFであるXLFがどう動いたかを横軸とし、縦軸に金曜日のGLDとGDXの変化を見ると、木曜日にVIXがあげたら金曜日に金が買われる傾向が若干強いように見える。ただ、ばらつきが大きいことには変わりがないので、これだけでは有用とは言えない。色々な要素を組み合わせると、傾向はもっと強くなるかもしれないが、インドや中国、中東の金需要など季節要因となる重要な要素は多いので、まあ、こんなものというところであろう。</p>
-<table border="0"><tr><br><img src="/2017/02/09/gold-on-fridays/scatters.png" title="木曜日のS&P500、VIX、XLFの動きと金ETFおよび金鉱株ETFの金曜日の価格変化" width="1200"><br></tr></table>
-
+<h2 id="コード"><a href="#コード" class="headerlink" title="コード"></a>コード</h2><p>ソースコードは<a href="https://gist.github.com/fanannan/1ec0f38f4f92a0726fc27ee4d8cf03ca" target="_blank" rel="external">こちら</a>に記載した。</p>
 
       
     </div>
@@ -436,13 +405,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/コモディティ/" rel="tag"># コモディティ</a>
-          
-            <a href="/tags/金/" rel="tag"># 金</a>
-          
-            <a href="/tags/米国株/" rel="tag"># 米国株</a>
-          
-            <a href="/tags/アノマリー/" rel="tag"># アノマリー</a>
+            <a href="/tags/VIX/" rel="tag"># VIX</a>
           
         </div>
       
@@ -451,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/09/intraday-pattern/" rel="next" title="米国株の朝の価格動向は夕方の価格動向に影響するか">
-                <i class="fa fa-chevron-left"></i> 米国株の朝の価格動向は夕方の価格動向に影響するか
+              <a href="/2017/02/12/minepy/" rel="next" title="MICとminepyの紹介">
+                <i class="fa fa-chevron-left"></i> MICとminepyの紹介
               </a>
             
           </div>
@@ -460,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/12/minepy/" rel="prev" title="MICとminepyの紹介">
-                MICとminepyの紹介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -490,7 +449,7 @@
   <div class="comments" id="comments">
     
       <div class="fb-comments"
-           data-href="http://fanannan.github.io/2017/02/09/gold-on-fridays/"
+           data-href="http://fanannan.github.io/2017/02/12/vix-sensitivities/"
            data-numposts="10"
            data-width="100%"
            data-colorscheme="light">
@@ -617,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#この記事に書いてあること"><span class="nav-number">1.</span> <span class="nav-text">この記事に書いてあること</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#契機"><span class="nav-number">2.</span> <span class="nav-text">契機</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#データ"><span class="nav-number">3.</span> <span class="nav-text">データ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#曜日別動向"><span class="nav-number">4.</span> <span class="nav-text">曜日別動向</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#この記事に書いてあること"><span class="nav-number">1.</span> <span class="nav-text">この記事に書いてあること</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#契機"><span class="nav-number">2.</span> <span class="nav-text">契機</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#データ"><span class="nav-number">3.</span> <span class="nav-text">データ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#実行例"><span class="nav-number">4.</span> <span class="nav-text">実行例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#コード"><span class="nav-number">5.</span> <span class="nav-text">コード</span></a></li></ol></div>
             
 
           </div>
