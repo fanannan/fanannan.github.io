@@ -1,0 +1,777 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif" rel="stylesheet">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Noto:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="運用方法,VIX,VXX," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="有為転変" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="この記事に書いてあること・前回の続きとして、日中、夜間のVXXの動きを確認した。・対象データ期間を広げても、月曜、火曜、金曜夜間の動きが大きいことが確認された。・月末を除外したり、コンタンゴの水準を考慮すると、月曜日のパフォーマンスの良さがより際立つ。
+
+契機始値か終値のいずれかでVXXを売買する場合、どのような日であればパフォーマンスが良いのかを見てみたい。
+データYahoo Financeか">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VXXの曜日別価格動向（続）">
+<meta property="og:url" content="http://fanannan.github.io/2017/02/23/vxx-by-day/index.html">
+<meta property="og:site_name" content="有為転変">
+<meta property="og:description" content="この記事に書いてあること・前回の続きとして、日中、夜間のVXXの動きを確認した。・対象データ期間を広げても、月曜、火曜、金曜夜間の動きが大きいことが確認された。・月末を除外したり、コンタンゴの水準を考慮すると、月曜日のパフォーマンスの良さがより際立つ。
+
+契機始値か終値のいずれかでVXXを売買する場合、どのような日であればパフォーマンスが良いのかを見てみたい。
+データYahoo Financeか">
+<meta property="og:image" content="http://fanannan.github.io/2017/02/23/vxx-by-day/daily.png">
+<meta property="og:image" content="http://fanannan.github.io/2017/02/23/vxx-by-day/days-in-month.png">
+<meta property="og:image" content="http://fanannan.github.io/2017/02/23/vxx-by-day/days-in-year.png">
+<meta property="og:image" content="http://fanannan.github.io/2017/02/23/vxx-by-day/monthly.png">
+<meta property="og:image" content="http://fanannan.github.io/2017/02/23/vxx-by-day/sharpe.png">
+<meta property="og:updated_time" content="2017-02-23T06:08:16.600Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VXXの曜日別価格動向（続）">
+<meta name="twitter:description" content="この記事に書いてあること・前回の続きとして、日中、夜間のVXXの動きを確認した。・対象データ期間を広げても、月曜、火曜、金曜夜間の動きが大きいことが確認された。・月末を除外したり、コンタンゴの水準を考慮すると、月曜日のパフォーマンスの良さがより際立つ。
+
+契機始値か終値のいずれかでVXXを売買する場合、どのような日であればパフォーマンスが良いのかを見てみたい。
+データYahoo Financeか">
+<meta name="twitter:image" content="http://fanannan.github.io/2017/02/23/vxx-by-day/daily.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fanannan.github.io/2017/02/23/vxx-by-day/"/>
+
+
+
+
+
+  <title> VXXの曜日別価格動向（続） | 有為転変 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ja">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/ja/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">有為転変</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            ホーム
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            過去記事
+          </a>
+        </li>
+      
+
+      
+
+
+    </ul>
+  
+
+  
+</nav>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-91008759-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://fanannan.github.io/2017/02/23/vxx-by-day/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="fanannan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="有為転変">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="有為転変" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                VXXの曜日別価格動向（続）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">投稿日</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-23T10:40:52+09:00">
+                2017-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">post.in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VIX/" itemprop="url" rel="index">
+                    <span itemprop="name">VIX</span>
+                  </a>
+                </span>
+
+                
+                
+                  、
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VIX/VXX/" itemprop="url" rel="index">
+                    <span itemprop="name">VXX</span>
+                  </a>
+                </span>
+
+                
+                
+                  、
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VIX/VXX/運用方法/" itemprop="url" rel="index">
+                    <span itemprop="name">運用方法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/23/vxx-by-day/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://fanannan.github.io/2017/02/23/vxx-by-day/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・<a href="/2017/02/21/vxx-intraday/">前回</a>の続きとして、日中、夜間のVXXの動きを確認した。<br>・対象データ期間を広げても、月曜、火曜、金曜夜間の動きが大きいことが確認された。<br>・月末を除外したり、コンタンゴの水準を考慮すると、月曜日のパフォーマンスの良さがより際立つ。</p>
+<hr>
+<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>始値か終値のいずれかでVXXを売買する場合、どのような日であればパフォーマンスが良いのかを見てみたい。</p>
+<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>Yahoo Financeから、2008年1月から現時点までの日次データを取得し利用した。前回は、Stooqによる５分足データであったので、期間が約２年と短かったが、今回は約９年間をカバーすることになり、だいぶん長くなる。</p>
+<h2 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h2><p>下記のチャートは、曜日別の日中、夜間のVXXの平均変化率を反転させたものを示している。横軸は０が月曜、４が金曜である。例えば一番左の青の棒グラフは、月曜日の日中の対数収益率、すなわち月曜の始値を同じ月曜の終値で割って対数を取ったもので、となりの緑の棒グラフは、火曜日の始値を月曜の終値で割って対数を取ったものである。時間の順番が逆転しているのは、VXXは設計上長期的には価格が下落する商品なので、ショート取引を行うことを前提とするほうがわかりやすいためである。<br>見ての通り、全ての日で平均変化率（収益率）はプラスであるが、特に月曜の日中の平均変化率が一番高く、火曜日がそれに次ぐ。夜間に関しては金曜日が高い。</p>
+<table border="0"><tr><td><br><img src="/2017/02/23/vxx-by-day/daily.png" title="曜日別平均価格変化" width="600"><br></td></tr></table>
+
+<p>次に、月内の日別に集計した。上段が平均変化率、下段が変化率の標準偏差である。ばらつきは大きいが、上旬中旬よりも下旬の方が、いくらか平均変化率が低く、また、標準偏差もやや大きい傾向になるように見える。</p>
+<table border="0"><tr><td><br><img src="/2017/02/23/vxx-by-day/days-in-month.png" title="日別平均価格変化" width="1200"><br></td></tr></table>
+
+<p>さらに、１月から１２月まで、それぞれ日別に集計したのが下のチャートで、一番左が１月、一番右が１２月である。８月の大きな下落と大きな標準偏差が目を引く。また、四半期末の下旬は、それ以外の月の下旬よりは、やや安定しているように見える。</p>
+<table border="0"><tr><td><br><img src="/2017/02/23/vxx-by-day/days-in-year.png" title="月別日別平均価格変化" width="1200"><br></td></tr></table>
+
+<p>なお、１月から１２月まで、月別で集計すると、８月のパフォーマンスの悪さが見て取れる。また、米国の年度末である１２月の夜間のパフォーマンスが良いのが興味深い。金曜日から月曜にかけての夜間（週末）のパフォーマンスが良いことと何か共通点があるのかもしれない。</p>
+<table border="0"><tr><td><br><img src="/2017/02/23/vxx-by-day/monthly.png" title="月別平均価格変化" width="600"><br></td></tr></table>
+
+<p>次に、再び週の曜日別の様子を見てみる。一番左の列は、さきほど見たものと同じで、単純に曜日別に集計したものである。一段目は、平均変化率（対数収益率）を対象とする日数分すべて単純合計したもので、大雑把に各曜日各時間帯だけに投資をした時の合計収益を示す。二段目は平均変化率（さきほどと同じもの）、三段目は標準偏差、四段目は平均変化率を標準偏差で割ったもの（擬似シャープレシオ）である。<br>月曜、火曜の平均変化率の高さは他の曜日よりも高いが、標準偏差は曜日による違いは少なく、月曜、火曜の素性の良さが現れている。<br>左から２列目は、毎月２５日以降を除外したもので、概ね全体に収益が上がり、月曜、火曜のパフォーマンスが更に良くなっている。月曜や火曜のパフォーマンスの良さが月上旬中旬のパフォーマンスの良さと共通した背景が何かあるのか、あるいは、FOMCなどの開催タイミングなどの影響があるのか、興味深い。<br>３列めは、VXXの商品性からして重要なVIX先物のコンタンゴの状況を示すために、VXVをVIXで除したものを期間構造の指標とし、これが1.05以上の時を取り出したものである。収益合計は少し下がるが、この場合でも月曜のパフォーマンスは更に改善される。また、木曜、金曜の夜間の改善も目を引く。<br>４列目は、２列めと同様に毎月２５日以降を除外し、かつ、３列めと同様にVXVをVIXで除したものが1.05であるときだけとしたものである。対象日数が減るため、１段目の合計収益は減るが、月曜、木曜の擬似シャープレシオは、他のケースと比較して、結構良い感じである。</p>
+<table border="0"><tr><td><br><img src="/2017/02/23/vxx-by-day/sharpe.png" title="曜日別平均価格変化" width="1200"><br></td></tr></table>
+
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/運用方法/" rel="tag"># 運用方法</a>
+          
+            <a href="/tags/VIX/" rel="tag"># VIX</a>
+          
+            <a href="/tags/VXX/" rel="tag"># VXX</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/21/vxx-intraday/" rel="next" title="VXXの曜日別価格動向">
+                <i class="fa fa-chevron-left"></i> VXXの曜日別価格動向
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/23/vxx-hmm/" rel="prev" title="Gaussian HMM モデルによる市場局面判別とVXX取引シミュレーション">
+                Gaussian HMM モデルによる市場局面判別とVXX取引シミュレーション <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://fanannan.github.io/2017/02/23/vxx-by-day/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            見出し
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            概要
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="fanannan" />
+          <p class="site-author-name" itemprop="name">fanannan</p>
+          <p class="site-description motion-element" itemprop="description">メモ書きです</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">記事</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">カテゴリー</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">タグ</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/fanannan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://twitter.com/fanannan" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#この記事に書いてあること"><span class="nav-number">1.</span> <span class="nav-text">この記事に書いてあること</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#契機"><span class="nav-number">2.</span> <span class="nav-text">契機</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#データ"><span class="nav-number">3.</span> <span class="nav-text">データ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#結果"><span class="nav-number">4.</span> <span class="nav-text">結果</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fanannan</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

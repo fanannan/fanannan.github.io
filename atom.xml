@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fanannan.github.io/"/>
-  <updated>2017-02-12T08:00:29.650Z</updated>
+  <updated>2017-02-23T08:15:21.297Z</updated>
   <id>http://fanannan.github.io/</id>
   
   <author>
@@ -14,6 +14,152 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gaussian HMM モデルによる市場局面判別とVXX取引シミュレーション</title>
+    <link href="http://fanannan.github.io/2017/02/23/vxx-hmm/"/>
+    <id>http://fanannan.github.io/2017/02/23/vxx-hmm/</id>
+    <published>2017-02-23T06:09:41.000Z</published>
+    <updated>2017-02-23T08:15:21.297Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・隠れマルコフモデルを使用して、米国市場のセンチメントらしきものの状態を表すことができるか試してみた。<br>・必ず適切な結果になる保証はないが、試す限りでは、VIXの上昇局面、下降局面の２状態を捉えたように見える。<br>・これだけを使って、VIXの上昇局面に対応すると思しき状態のときに、VXXで運用させてみると、まずまずの結果が出た。</p>
+<hr>
+<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>株式市場のセンチメントを、隠れマルコフモデルの潜在変数によって表すことができるかどうか確かめたい。</p>
+<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>Yahoo Financeから、2008年1月から現時点までの日次データを取得し利用した。</p>
+<h2 id="モデリング"><a href="#モデリング" class="headerlink" title="モデリング"></a>モデリング</h2><p>ツールとしては、hmmlearnを利用することとし、モデルはGaussianHMM、市場が強気になっているときと弱気になっているときの２つの状態を判別してほしいので、潜在変数で示す状態の数（GaussianHMMの引数n_componentsで指定する）は２とした。</p>
+<p>このGaussianHMMは、教師付き学習ではないので、市場が強気になっているか弱気になっているかについて、学習時にラベルは与えることはない。したがって、市場の状態を２つの状態に分類できたとしても、その意味は人間が想像するしかない。学習用のデータが多岐に渡ると、モデルが学習した状態がどのようなものなのか見当もつかなくなるおそれがあるので、ここでは、市場が強気になっているのか弱気になっているのかを比較的素直に表しているであろう情報として、VIX、VXV、VXVとVIXの比、VXX、XIVのそれぞれの日次変化率を用意した。</p>
+<h2 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h2><p>下記のチャートは上段が学習、下段がテストである。赤と青の点が並んでいる線は、VXXの価格の推移の線のうえに、２つの状態を色分けして示したものである。概ね、VXXが上昇する局面では青、それ以外では赤となっている様子が窺われるので、市場の弱気になる局面（青）、強気になる局面（赤）が判別できているように思われる。</p>
+<p>灰色の線は、毎日VXXをショートしつづけた場合（コスト等なし）の資産曲線、赤と青の線はそれぞれの色の局面の日のみショートした場合の資産曲線である。青の場合でも若干利益は上がっているが、赤の方がずっと成績が良く、また灰色のような大きなドローダウンは生じていない。<br>たまたま、あるいは、モデルが信用できないことを示しているのかもしれないが、学習時よりもテストの場合のほうが赤線のパフォーマンスのがより良くなっている。局面の判別もまずまず適切にできているように思われる。</p>
+<table border="0"><tr><td><br><img src="/2017/02/23/vxx-hmm/vxx-hmm.png" title="GaussianHMMによる市場局面判別とVXXのショートトレード試算" width="1200"><br></td></tr></table>
+
+<p>なお、GaussianHMMは乱数の初期値に影響を受けるはずだが、このケースにおいては、乱数初期値に関わらず、同じ分類結果しか出なかった。また、GMMHMMも試してみたが、GaussianHMMのときほどには局面がうまく分類できなかった。</p>
+<p>Jupyterのコードは<a href="https://gist.github.com/fanannan/ad04d9e4e4532725e822e017aa3ee032" target="_blank" rel="external">こちら</a>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;この記事に書いてあること&quot;&gt;&lt;a href=&quot;#この記事に書いてあること&quot; class=&quot;headerlink&quot; title=&quot;この記事に書いてあること&quot;&gt;&lt;/a&gt;この記事に書いてあること&lt;/h2&gt;&lt;p&gt;・隠れマルコフモデルを使用して、米国市場のセンチメ
+    
+    </summary>
+    
+      <category term="VIX" scheme="http://fanannan.github.io/categories/VIX/"/>
+    
+      <category term="VXX" scheme="http://fanannan.github.io/categories/VIX/VXX/"/>
+    
+      <category term="運用方法" scheme="http://fanannan.github.io/categories/VIX/VXX/%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    
+    
+      <category term="運用方法" scheme="http://fanannan.github.io/tags/%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="VIX" scheme="http://fanannan.github.io/tags/VIX/"/>
+    
+      <category term="VXX" scheme="http://fanannan.github.io/tags/VXX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VXXの曜日別価格動向（続）</title>
+    <link href="http://fanannan.github.io/2017/02/23/vxx-by-day/"/>
+    <id>http://fanannan.github.io/2017/02/23/vxx-by-day/</id>
+    <published>2017-02-23T01:40:52.000Z</published>
+    <updated>2017-02-23T06:08:16.600Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・<a href="/2017/02/21/vxx-intraday/">前回</a>の続きとして、日中、夜間のVXXの動きを確認した。<br>・対象データ期間を広げても、月曜、火曜、金曜夜間の動きが大きいことが確認された。<br>・月末を除外したり、コンタンゴの水準を考慮すると、月曜日のパフォーマンスの良さがより際立つ。</p>
+<hr>
+<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>始値か終値のいずれかでVXXを売買する場合、どのような日であればパフォーマンスが良いのかを見てみたい。</p>
+<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>Yahoo Financeから、2008年1月から現時点までの日次データを取得し利用した。前回は、Stooqによる５分足データであったので、期間が約２年と短かったが、今回は約９年間をカバーすることになり、だいぶん長くなる。</p>
+<h2 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h2><p>下記のチャートは、曜日別の日中、夜間のVXXの平均変化率を反転させたものを示している。横軸は０が月曜、４が金曜である。例えば一番左の青の棒グラフは、月曜日の日中の対数収益率、すなわち月曜の始値を同じ月曜の終値で割って対数を取ったもので、となりの緑の棒グラフは、火曜日の始値を月曜の終値で割って対数を取ったものである。時間の順番が逆転しているのは、VXXは設計上長期的には価格が下落する商品なので、ショート取引を行うことを前提とするほうがわかりやすいためである。<br>見ての通り、全ての日で平均変化率（収益率）はプラスであるが、特に月曜の日中の平均変化率が一番高く、火曜日がそれに次ぐ。夜間に関しては金曜日が高い。</p>
+<table border="0"><tr><td><br><img src="/2017/02/23/vxx-by-day/daily.png" title="曜日別平均価格変化" width="600"><br></td></tr></table>
+
+<p>次に、月内の日別に集計した。上段が平均変化率、下段が変化率の標準偏差である。ばらつきは大きいが、上旬中旬よりも下旬の方が、いくらか平均変化率が低く、また、標準偏差もやや大きい傾向になるように見える。</p>
+<table border="0"><tr><td><br><img src="/2017/02/23/vxx-by-day/days-in-month.png" title="日別平均価格変化" width="1200"><br></td></tr></table>
+
+<p>さらに、１月から１２月まで、それぞれ日別に集計したのが下のチャートで、一番左が１月、一番右が１２月である。８月の大きな下落と大きな標準偏差が目を引く。また、四半期末の下旬は、それ以外の月の下旬よりは、やや安定しているように見える。</p>
+<table border="0"><tr><td><br><img src="/2017/02/23/vxx-by-day/days-in-year.png" title="月別日別平均価格変化" width="1200"><br></td></tr></table>
+
+<p>なお、１月から１２月まで、月別で集計すると、８月のパフォーマンスの悪さが見て取れる。また、米国の年度末である１２月の夜間のパフォーマンスが良いのが興味深い。金曜日から月曜にかけての夜間（週末）のパフォーマンスが良いことと何か共通点があるのかもしれない。</p>
+<table border="0"><tr><td><br><img src="/2017/02/23/vxx-by-day/monthly.png" title="月別平均価格変化" width="600"><br></td></tr></table>
+
+<p>次に、再び週の曜日別の様子を見てみる。一番左の列は、さきほど見たものと同じで、単純に曜日別に集計したものである。一段目は、平均変化率（対数収益率）を対象とする日数分すべて単純合計したもので、大雑把に各曜日各時間帯だけに投資をした時の合計収益を示す。二段目は平均変化率（さきほどと同じもの）、三段目は標準偏差、四段目は平均変化率を標準偏差で割ったもの（擬似シャープレシオ）である。<br>月曜、火曜の平均変化率の高さは他の曜日よりも高いが、標準偏差は曜日による違いは少なく、月曜、火曜の素性の良さが現れている。<br>左から２列目は、毎月２５日以降を除外したもので、概ね全体に収益が上がり、月曜、火曜のパフォーマンスが更に良くなっている。月曜や火曜のパフォーマンスの良さが月上旬中旬のパフォーマンスの良さと共通した背景が何かあるのか、あるいは、FOMCなどの開催タイミングなどの影響があるのか、興味深い。<br>３列めは、VXXの商品性からして重要なVIX先物のコンタンゴの状況を示すために、VXVをVIXで除したものを期間構造の指標とし、これが1.05以上の時を取り出したものである。収益合計は少し下がるが、この場合でも月曜のパフォーマンスは更に改善される。また、木曜、金曜の夜間の改善も目を引く。<br>４列目は、２列めと同様に毎月２５日以降を除外し、かつ、３列めと同様にVXVをVIXで除したものが1.05であるときだけとしたものである。対象日数が減るため、１段目の合計収益は減るが、月曜、木曜の擬似シャープレシオは、他のケースと比較して、結構良い感じである。</p>
+<table border="0"><tr><td><br><img src="/2017/02/23/vxx-by-day/sharpe.png" title="曜日別平均価格変化" width="1200"><br></td></tr></table>
+
+
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;この記事に書いてあること&quot;&gt;&lt;a href=&quot;#この記事に書いてあること&quot; class=&quot;headerlink&quot; title=&quot;この記事に書いてあること&quot;&gt;&lt;/a&gt;この記事に書いてあること&lt;/h2&gt;&lt;p&gt;・&lt;a href=&quot;/2017/02/21/vxx
+    
+    </summary>
+    
+      <category term="VIX" scheme="http://fanannan.github.io/categories/VIX/"/>
+    
+      <category term="VXX" scheme="http://fanannan.github.io/categories/VIX/VXX/"/>
+    
+      <category term="運用方法" scheme="http://fanannan.github.io/categories/VIX/VXX/%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    
+    
+      <category term="運用方法" scheme="http://fanannan.github.io/tags/%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="VIX" scheme="http://fanannan.github.io/tags/VIX/"/>
+    
+      <category term="VXX" scheme="http://fanannan.github.io/tags/VXX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VXXの曜日別価格動向</title>
+    <link href="http://fanannan.github.io/2017/02/21/vxx-intraday/"/>
+    <id>http://fanannan.github.io/2017/02/21/vxx-intraday/</id>
+    <published>2017-02-21T01:36:33.000Z</published>
+    <updated>2017-02-23T01:46:46.053Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="この記事に書いてあること"><a href="#この記事に書いてあること" class="headerlink" title="この記事に書いてあること"></a>この記事に書いてあること</h2><p>・日中および夜間のVXXの値動きを、曜日別に比較してみた。<br>・分散は非常に大きいものの、曜日による平均的な値動きの違いは、それなりに大きく無視できなさそう。</p>
+<hr>
+<h2 id="契機"><a href="#契機" class="headerlink" title="契機"></a>契機</h2><p>曜日によって、日中のVIXの値動きに違いがあるという分析が良くあるので、今回は、VIXの代わりにVXXというETFを使って調べてみた。</p>
+<h2 id="データ"><a href="#データ" class="headerlink" title="データ"></a>データ</h2><p>例によって、Stooqの過去約２年分の５分足データを集めて用いた。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>StooqのデータはGMTベースの5分足なので、米国西海岸時間で夏時間を考慮してオープンの9:30のほか、クローズの16時まで1時間毎のデータを1日分にまとめ直した。そのうえで、曜日別、月内上旬中旬下旬別に集計した。</p>
+<h2 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h2><p>以下、分類別にチャートを２つずつ用意した。左側が9:30(横軸の930)を起点とし、翌日の9:30(横軸の3330)を終点とする折れ線グラフである。太い青線が各時間における値動きの平均値を示しており、細い線は上から10%タイルから90%タイルまでを示している。右側は同様に各時点別の変化率を示している。</p>
+<table border="0"><tr><td><br><img src="/2017/02/21/vxx-intraday/total.png" title="日中価格変化と変動率（全体）" width="1200"><br></td></tr></table>
+
+<p>まず、全ての日の平均について右のチャートで見ると、日中9:30から16:30までの間は概ね上下対象に線が並んでいる。上位10%タイルの線が始値比較で+4%、90%タイルの線が-4%ほどになっている。ただし、午後の時間帯では上値は重く、夕方にかけて下方に偏りが見える。平均では朝10:00まで少し上昇した後は下げている。夜間の時間帯は全体としては下落方向に行くことが多いことを示しているが、上位10%タイルの線は大きく上に振れており、突発的に上がることもあることを指し示している。左側のチャートは同じことを時間帯別に示しているものだ（本当は折れ線で表現するのはあまり適当ではない）が、10:00から11:00の下げ、そのあとの一端の上昇と午後の下落のようすが、よりはっきりと現れている。</p>
+<p>次に、曜日別に見ると、月曜日は、VXXの下落傾向がかなり強く出ている。午後の時間帯に上昇する時間帯も少しあるが、上げ幅の範囲も限られており、しかも、火曜日の始値まで下げ続ける傾向が強い。</p>
+<table border="0"><tr><td><br><img src="/2017/02/21/vxx-intraday/monday.png" title="日中価格変化と変動率（月曜平均）" width="1200"><br></td></tr></table><br>火曜日は、朝少し上げるが、あとは比較的穏当に下げていく。<br><table border="0"><tr><td><br><img src="/2017/02/21/vxx-intraday/tuesday.png" title="日中価格変化と変動率（火曜平均）" width="1200"><br></td></tr></table><br>水曜日は、昼ごろの上げはあるが、動きは一週間の中でも一番フラットでばらつきの少ない落ち着いたものとなっている。<br><table border="0"><tr><td><br><img src="/2017/02/21/vxx-intraday/wednesday.png" title="日中価格変化と変動率（水曜平均）" width="1200"><br></td></tr></table><br>木曜日は、朝の上げが大きくなり、夕方に始値近辺まで戻した後、金曜日にかけて上昇する傾向が現れる。<br><table border="0"><tr><td><br><img src="/2017/02/21/vxx-intraday/thursday.png" title="日中価格変化と変動率（木曜平均）" width="1200"><br></td></tr></table><br>金曜日は、朝わずかに下げた後、終値にかけて上昇が強くなる。木曜日と同様に、翌営業日月曜日に向けて上昇する傾向がある。上ブレの程度は金曜日の日中が最も大きいが、夜間の時間帯では木曜から金曜にかけての方が金曜から月曜にかけてよりも大きく跳ね上がりやすい。<br><table border="0"><tr><td><br><img src="/2017/02/21/vxx-intraday/friday.png" title="日中価格変化と変動率（金曜平均）" width="1200"><br></td></tr></table>
+
+<p>今度は、月の上旬、中旬、下旬で分けてみる。いささか思い込みもあると思うが、上旬が週初め、中旬が週中、下旬が週末の動きに似ているようにも見えなくもない。</p>
+<table border="0"><tr><td><br><img src="/2017/02/21/vxx-intraday/earlymonth.png" title="日中価格変化と変動率（上旬平均）" width="1200"><br></td></tr></table><br><table border="0"><tr><td><br><img src="/2017/02/21/vxx-intraday/midmonth.png" title="日中価格変化と変動率（中旬平均）" width="1200"><br></td></tr></table><br><table border="0"><tr><td><br><img src="/2017/02/21/vxx-intraday/latemonth.png" title="日中価格変化と変動率（水曜平均）" width="1200"><br></td></tr></table>
+
+<h2 id="意味合い"><a href="#意味合い" class="headerlink" title="意味合い"></a>意味合い</h2><p>市場には、あまり合理的な説明がつかないアノマリーがたくさんある。しかし、VIXやVXXに関しては市場参加者の心理を反映して動く側面があるので、週末前後や、曜日や時期が固定されている重要イベント（FOMIC、重要指標の発表等）によって曜日や時期による違いが生まれているということかもしれない。<br>また、ここでの結果は、<a href="https://papers.ssrn.com/sol3/papers2.cfm?abstract_id=2884455" target="_blank" rel="external">こちらの論文</a>“The Intraday Properties of the VIX and the VXO”で分析されているVIXの日中の動きと概ね似ているが、期間構造の要素が入るためか、VIXとVXXとの違いもあるようで興味深い。</p>
+<p>Jupyterのコードは<a href="https://gist.github.com/fanannan/4fa0f15ad061d0554cd22c0199c8d1db" target="_blank" rel="external">こちら</a>（適宜セルに分割必要）。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;この記事に書いてあること&quot;&gt;&lt;a href=&quot;#この記事に書いてあること&quot; class=&quot;headerlink&quot; title=&quot;この記事に書いてあること&quot;&gt;&lt;/a&gt;この記事に書いてあること&lt;/h2&gt;&lt;p&gt;・日中および夜間のVXXの値動きを、曜日別に比較し
+    
+    </summary>
+    
+      <category term="VIX" scheme="http://fanannan.github.io/categories/VIX/"/>
+    
+      <category term="VXX" scheme="http://fanannan.github.io/categories/VIX/VXX/"/>
+    
+      <category term="運用方法" scheme="http://fanannan.github.io/categories/VIX/VXX/%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    
+    
+      <category term="運用方法" scheme="http://fanannan.github.io/tags/%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="VIX" scheme="http://fanannan.github.io/tags/VIX/"/>
+    
+      <category term="VXX" scheme="http://fanannan.github.io/tags/VXX/"/>
+    
+  </entry>
   
   <entry>
     <title>VIX指数に先行する指標探し</title>
